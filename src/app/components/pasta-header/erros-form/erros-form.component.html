@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="email">E-mail</label>
+      <input type="email" id="email" formControlName="email">
+      <div appMensagensErro [control]="form.get('email')!"></div>
+    </div>
+  
+    <div>
+      <label for="confirmarEmail">Confirmar E-mail</label>
+      <input type="email" id="confirmarEmail" formControlName="confirmarEmail">
+      <div appMensagensErro [control]="form.get('confirmarEmail')!"></div>
+    </div>
+  
+    <hr>
+  
+    <div>
+      <label for="senha">Senha</label>
+      <div>
+        <input [type]="mostrarSenha ? 'text' : 'password'" id="senha" formControlName="senha">
+        <button type="button" (click)="alternarVisibilidadeSenha()">
+          {{ mostrarSenha ? 'Esconder' : 'Mostrar' }}
+        </button>
+      </div>
+      <div appMensagensErro [control]="form.get('senha')!"></div>
+    </div>
+  
+    <div>
+      <label for="confirmarSenha">Confirmar Senha</label>
+      <div>
+        <input [type]="mostrarSenha ? 'text' : 'password'" id="confirmarSenha" formControlName="confirmarSenha">
+        <button type="button" (click)="alternarVisibilidadeSenha()">
+          {{ mostrarSenha ? 'Esconder' : 'Mostrar' }}
+        </button>
+      </div>
+      <div appMensagensErro [control]="form.get('confirmarSenha')!"></div>
+    </div>
+  
+    <button type="submit" [disabled]="form.invalid">Enviar</button>
+  </form>
