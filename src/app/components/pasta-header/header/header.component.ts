@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { RouterLink } from "@angular/router"
-import { ErrosFormComponent } from '../erros-form/erros-form.component';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, ErrosFormComponent],
+  imports: [RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+  
 }
