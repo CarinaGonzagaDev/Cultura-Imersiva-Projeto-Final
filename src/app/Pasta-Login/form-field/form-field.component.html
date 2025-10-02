@@ -1,24 +1,16 @@
-<div class="form-group space-y-1">
-    <label [for]="id" class="block text-sm font-medium text-gray-300">{{ label }}</label>
-    
-    <div class="input-icon-container relative flex items-center">
-        <input [type]="type" [id]="id" [placeholder]="placeholder"
-               class="w-full p-3 border bg-gray-700 text-white rounded-xl focus:ring-pink-500 focus:border-pink-500 transition duration-150 pr-10"
-               [class]="getValidationClass()"
-               [ngModel]="value" (ngModelChange)="onValueChange($event)">
-  
-        @if (isValid !== null) {
-            <span class="input-icon absolute right-3 w-5 h-5">
-                @if (isValid) {
-                    <svg class="text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                } @else {
-                    <svg class="text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                }
-            </span>
-        }
-    </div>
-    
-    @if (errorMessage) {
-        <small class="block mt-1 text-sm text-red-400">{{ errorMessage }}</small>
+<div class="mb-4">
+    <label [for]="id" class="block text-sm font-medium text-gray-300 mb-1">{{ label }}</label>
+    <input
+      [id]="id"
+      [type]="type"
+      [placeholder]="placeholder"
+      [ngModel]="value"
+      (ngModelChange)="onValueChange($event)"
+      (blur)="onValueChange(value)"
+      [class]="getValidationClass()"
+      class="w-full p-3 bg-gray-700 text-white rounded-xl transition duration-150 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    >
+    @if (isValid === false && errorMessage) {
+      <p class="mt-1 text-xs text-red-400 font-semibold">{{ errorMessage }}</p>
     }
   </div>

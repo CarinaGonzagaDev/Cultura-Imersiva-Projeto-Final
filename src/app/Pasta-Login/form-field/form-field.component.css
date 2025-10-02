@@ -1,14 +1,6 @@
-.input-icon-container {
-    position: relative;
+:host { 
+    display: block; 
 }
-
-.input-icon {
-    /* Garante que o ícone flutue sobre o input */
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    width: 20px;
-    height: 20px;
-}
+.border-red-500 { border-color: #EF4444 !important; }
+.border-green-500 { border-color: #10B981 !important; }
+.border-gray-700 { border-color: #374151 !important; }

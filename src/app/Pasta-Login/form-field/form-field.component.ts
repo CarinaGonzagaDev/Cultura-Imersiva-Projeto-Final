@@ -6,11 +6,11 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule], 
   templateUrl: './form-field.component.html',
-  styleUrl: './form-field.component.css',
+  styleUrls: ['./form-field.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormFieldComponent {
-  // --- ENTRADAS (Inputs) ---
+  // Entradas (Inputs)
   @Input({ required: true }) id: string = '';
   @Input({ required: true }) label: string = '';
   @Input() type: string = 'text';
@@ -20,20 +20,21 @@ export class FormFieldComponent {
   @Input() isValid: boolean | null = null;
   @Input() errorMessage: string | null = null;
 
-  // --- SAÍDAS (Output) ---
+  // Saídas (Outputs)
   @Output() valueChange = new EventEmitter<string>();
 
   onValueChange(newValue: string) {
+    this.value = newValue;
     this.valueChange.emit(newValue);
   }
 
   getValidationClass(): string {
       if (this.isValid === true) {
-          return 'border-green-500';
+          return 'border border-green-500';
       }
       if (this.isValid === false) {
-          return 'border-red-500';
+          return 'border border-red-500';
       }
-      return 'border-gray-700';
+      return 'border border-gray-700';
   }
 }
