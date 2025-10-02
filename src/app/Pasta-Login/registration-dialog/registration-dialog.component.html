@@ -1,0 +1,82 @@
+<div class="dialog-backdrop fixed inset-0 flex items-center justify-center p-4 z-50 transition-opacity duration-300">
+    <div class="w-full max-w-lg p-8 sm:p-10 bg-gray-800 rounded-2xl shadow-2xl border border-gray-700 transform scale-100 transition-transform duration-300">
+        
+        <div class="flex justify-between items-start mb-6">
+          <div class="text-left">
+            <h3 class="text-3xl font-extrabold text-white">
+                <span class="text-pink-400">Criar</span> Conta
+            </h3>
+            <p class="mt-1 text-md text-indigo-400 font-medium">Junte-se à Cultura Imersiva!</p>
+          </div>
+          <button (click)="closeDialog.emit(false)" class="text-gray-400 hover:text-gray-200">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <form (ngSubmit)="handleRegistration.emit()" class="space-y-5">
+            
+            <app-form-field
+                id="username" label="Nome de Usuário" placeholder="Seu apelido" type="text"
+                [value]="username()" 
+                [isValid]="isUsernameValid()" 
+                [errorMessage]="usernameError()"
+                (valueChange)="onValueChange('username', $event)">
+            </app-form-field>
+
+            <app-form-field
+                id="email" label="Digite seu E-mail" placeholder="seu.email@dominio.com" type="email"
+                [value]="email()" 
+                [isValid]="isEmailValid()" 
+                [errorMessage]="emailError()"
+                (valueChange)="onValueChange('email', $event)">
+            </app-form-field>
+
+            <app-form-field
+                id="password" label="Digite uma senha" placeholder="Mínimo 6 caracteres" type="password"
+                [value]="password()" 
+                [isValid]="isPasswordValid()" 
+                [errorMessage]="passwordError()"
+                (valueChange)="onValueChange('password', $event)">
+            </app-form-field>
+
+            <div class="mt-3 text-sm text-gray-400 -mt-2">
+                <p class="font-semibold mb-1">Deve conter:</p>
+                <ul class="list-disc list-inside ml-2 space-y-1">
+                    <li [class]="{'text-green-400': checkPasswordRequirement('length'), 'text-red-400': !checkPasswordRequirement('length')}">Mais ou igual a 6 caracteres</li>
+                    <li [class]="{'text-green-400': checkPasswordRequirement('uppercase'), 'text-red-400': !checkPasswordRequirement('uppercase')}">Uma letra maiúscula</li>
+                    <li [class]="{'text-green-400': checkPasswordRequirement('lowercase'), 'text-red-400': !checkPasswordRequirement('lowercase')}">Uma letra minúscula</li>
+                    <li [class]="{'text-green-400': checkPasswordRequirement('number'), 'text-red-400': !checkPasswordRequirement('number')}">Um número</li>
+                </ul>
+            </div>
+
+            <app-form-field
+                id="passwordConfirm" label="Confirme a sua Senha" placeholder="Confirmação" type="password"
+                [value]="passwordConfirm()" 
+                [isValid]="isPasswordConfirmValid()" 
+                [errorMessage]="passwordConfirmError()"
+                (valueChange)="onValueChange('passwordConfirm', $event)">
+            </app-form-field>
+
+            <button type="submit" [disabled]="!isFormValid() || isLoading()"
+                    class="w-full py-3 bg-pink-600 hover:bg-pink-500 text-white font-bold rounded-xl transition duration-200 shadow-lg shadow-pink-700/50 transform hover:scale-[1.01] flex items-center justify-center">
+                @if (!isLoading()) {
+                  <span>Criar Conta no AniVerse</span>
+                } @else {
+                  <span>Registrando...</span>
+                  <div class="spinner ml-2 h-5 w-5 border-2 border-r-transparent rounded-full animate-spin"></div>
+                }
+            </button>
+            
+            @if (messageText()) {
+              <div class="mt-4 p-3 text-center rounded-lg font-medium" [class]="getMessageClass()">
+                  {{ messageText() }}
+              </div>
+            }
+            
+            <div class="text-center pt-2">
+                <p class="text-gray-400 text-sm">Já tem uma conta?</p>
+                <a href="#" class="text-indigo-400 hover:text-indigo-300 font-semibold text-sm">Acessar Minha Conta</a>
+            </div>
+        </form>
+    </div>
+</div>
