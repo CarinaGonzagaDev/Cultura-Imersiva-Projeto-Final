@@ -4,31 +4,26 @@
       <div class="filter-group">
         <h3>Gênero</h3>
         <label *ngFor="let genre of allGenres">
-          <input 
-            type="checkbox" 
-            [(ngModel)]="selectedGenres[genre]" 
-            (change)="applyFilters()">
+          <input type="checkbox" [(ngModel)]="selectedGenres[genre]" (change)="applyFilters()">
           {{ genre }}
         </label>
       </div>
+  
+      <div class="filter-group">
+        <h3>Status</h3>
+        <label><input type="radio" name="status" value="all" [(ngModel)]="status" (change)="applyFilters()"> Todos</label>
+        <label><input type="radio" name="status" value="Finalizado" [(ngModel)]="status" (change)="applyFilters()"> Finalizados</label>
+        <label><input type="radio" name="status" value="Em Lançamento" [(ngModel)]="status" (change)="applyFilters()"> Em Lançamento</label>
+      </div>
+  
       <div class="filter-group">
         <h3>Ordenar Por</h3>
         <label>
-          <input 
-            type="radio" 
-            name="sort" 
-            value="popularity" 
-            [(ngModel)]="sortBy" 
-            (change)="applyFilters()">
+          <input type="radio" name="sort" value="popularity" [(ngModel)]="sortBy" (change)="applyFilters()">
           Popularidade
         </label>
         <label>
-          <input 
-            type="radio" 
-            name="sort" 
-            value="release"
-            [(ngModel)]="sortBy" 
-            (change)="applyFilters()">
+          <input type="radio" name="sort" value="release" [(ngModel)]="sortBy" (change)="applyFilters()">
           Lançamento
         </label>
       </div>

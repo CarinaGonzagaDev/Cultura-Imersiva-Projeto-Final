@@ -4,25 +4,37 @@
       <div class="filter-group">
         <h3>Gênero</h3>
         <label *ngFor="let genre of allGenres">
-          <input 
-            type="checkbox" 
-            [(ngModel)]="selectedGenres[genre]" 
-            (change)="applyFilters()">
+          <input type="checkbox" [(ngModel)]="selectedGenres[genre]" (change)="applyFilters()">
           {{ genre }}
         </label>
       </div>
+  
       <div class="filter-group">
-        <h3>Status</h3>
-        <label>
-          <input type="radio" name="status" value="all" [(ngModel)]="status" (change)="applyFilters()"> Todos
-        </label>
-        <label>
-          <input type="radio" name="status" value="Em Andamento" [(ngModel)]="status" (change)="applyFilters()"> Em Andamento
-        </label>
-        <label>
-          <input type="radio" name="status" value="Finalizado" [(ngModel)]="status" (change)="applyFilters()"> Finalizado
+        <h3>País de Origem</h3>
+        <label *ngFor="let c of countries">
+          <input type="radio" name="country" [value]="c" [(ngModel)]="country" (change)="applyFilters()">
+          {{ c }}
         </label>
       </div>
+  
+      <div class="filter-group">
+        <h3>Status</h3>
+        <label><input type="radio" name="status" value="all" [(ngModel)]="status" (change)="applyFilters()"> Todos</label>
+        <label><input type="radio" name="status" value="Em Andamento" [(ngModel)]="status" (change)="applyFilters()"> Em Andamento</label>
+        <label><input type="radio" name="status" value="Finalizado" [(ngModel)]="status" (change)="applyFilters()"> Finalizado</label>
+      </div>
+  
+      <div class="filter-group">
+          <h3>Ordenar Por</h3>
+          <label>
+            <input type="radio" name="sort" value="popularity" [(ngModel)]="sortBy" (change)="applyFilters()">
+            Popularidade
+          </label>
+          <label>
+            <input type="radio" name="sort" value="release" [(ngModel)]="sortBy" (change)="applyFilters()">
+            Lançamento
+          </label>
+        </div>
     </aside>
   
     <section class="works-grid">
