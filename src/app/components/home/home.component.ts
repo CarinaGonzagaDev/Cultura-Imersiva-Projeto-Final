@@ -1,31 +1,102 @@
 import { Component } from '@angular/core';
 import { HeroComponent } from '../../components/hero/hero.component';
-import { FeaturedCarouselComponent, CarouselItem } from '../feature-carousel/feature-carousel.component';
+import { FeaturedCarouselComponent, CarouselItem } from '../../components/featured-carousel/featured-carousel.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  // Importamos os componentes que vamos usar no template
-  imports: [ HeroComponent,FeaturedCarouselComponent],
+  imports: [
+    HeroComponent,
+    FeaturedCarouselComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
 
-  // Dados mocados (no futuro, viriam de uma API)
+  // Dados dos animes usando suas imagens locais
   animes: CarouselItem[] = [
-    { image: 'https://cdn.myanimelist.net/images/anime/1208/94745.jpg', title: 'Fullmetal Alchemist', meta: 'Ação, Aventura', rating: 9.1 },
-    { image: 'https://cdn.myanimelist.net/images/anime/1988/119433.jpg', title: 'Jujutsu Kaisen', meta: 'Ação, Sobrenatural', rating: 8.6 },
-    { image: 'https://cdn.myanimelist.net/images/anime/11/39717.jpg', title: 'Shingeki no Kyojin', meta: 'Ação, Fantasia', rating: 8.5 },
-    { image: 'https://cdn.myanimelist.net/images/anime/1171/109222.jpg', title: 'Steins;Gate', meta: 'Sci-Fi, Suspense', rating: 9.0 },
-    { image: 'https://cdn.myanimelist.net/images/anime/13/17405.jpg', title: 'Death Note', meta: 'Suspense, Psicológico', rating: 8.6 },
+    { 
+      image: 'Jujutsu Kaisen.jpg', 
+      title: 'Jujutsu Kaisen', 
+      season: 'S2',
+      episodes: 'E23',
+      rating: 8.7
+    },
+    { 
+      image: 'Kimetsu no Yaiba.jpg', 
+      title: 'Kimetsu no Yaiba', 
+      season: 'S4',
+      episodes: 'E8',
+      rating: 9.8
+    },
+    { 
+      image: 'Chainsaw Man.jpg', 
+      title: 'Chainsaw Man', 
+      season: 'S1',
+      episodes: 'E12',
+      rating: 9.8
+    },
+    { 
+      image: 'Dandadan.jpg', 
+      title: 'Dandadan', 
+      season: 'S1',
+      episodes: 'E12',
+      rating: 9.8
+    },
+    { 
+      image: 'Attack On Titan.jpg', // Nome da imagem corrigido
+      title: 'Attack on Titan', 
+      season: 'S4',
+      episodes: 'E28',
+      rating: 9.3
+    },
+     // Adicionei Sakamoto Days que estava nas suas imagens
+    {
+      image: 'SAKAMOTO DAYS.jpg',
+      title: 'Sakamoto Days',
+      season: 'S1',
+      episodes: 'E12',
+      rating: 9.1
+    }
   ];
 
+  // Dados dos mangás usando suas imagens locais
   mangas: CarouselItem[] = [
-    { image: 'https://cdn.myanimelist.net/images/manga/1/259070.jpg', title: 'Berserk', meta: 'Fantasia Sombria', rating: 9.4 },
-    { image: 'https://cdn.myanimelist.net/images/manga/2/253146.jpg', title: 'Vagabond', meta: 'Ação, Histórico', rating: 9.2 },
-    { image: 'https://cdn.myanimelist.net/images/manga/3/258224.jpg', title: 'One Piece', meta: 'Aventura, Fantasia', rating: 9.2 },
-    { image: 'https://cdn.myanimelist.net/images/manga/3/242981.jpg', title: 'Vinland Saga', meta: 'Ação, Histórico', rating: 9.0 },
-    { image: 'https://cdn.myanimelist.net/images/manga/3/258223.jpg', title: 'Oyasumi Punpun', meta: 'Drama, Psicológico', rating: 9.0 },
+    { 
+      image: 'One Piece Mangá.jpg', 
+      title: 'One Piece', 
+      season: 'Em Andamento',
+      episodes: '1161 Caps.',
+      rating: 9.9
+    },
+    { 
+      image: 'Look Back Mangá.jpg', 
+      title: 'Look Back', 
+      season: 'Finalizado',
+      episodes: '1 Cap.',
+      rating: 9.5
+    },
+    { 
+      image: 'Otoyomegatari Mangá.jpg', 
+      title: 'A Bride\'s Story', 
+      season: 'Em Andamento',
+      episodes: '112 Caps.',
+      rating: 9.7
+    },
+    { 
+      image: 'Battle Angel Alita Mangá.jpg', 
+      title: 'Battle Angel Alita', 
+      season: 'Finalizado',
+      episodes: '51 Caps.',
+      rating: 9.3
+    },
+    { 
+      image: 'Dragon Ball Mangá.jpg', 
+      title: 'Dragon Ball Super', 
+      season: 'Em Andamento',
+      episodes: '104 Caps.',
+      rating: 8.5
+    },
   ];
 }

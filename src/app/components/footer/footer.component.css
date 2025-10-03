@@ -1,12 +1,13 @@
+/* CSS final e corrigido para o Footer */
 footer {
-  padding: 2rem;
-  background-color: var(--surface-color);
+  background-color: #101010;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 2rem 0;
   margin-top: auto;
 }
-
-/* ESTA REGRA CENTRALIZA O CONTEÚDO DO FOOTER */
 .footer-container {
-  max-width: 1200px; /* Define uma largura máxima */
-  margin: 0 auto;    /* Centraliza o container na página */
-  text-align: center; /* Centraliza o texto dentro do container */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
