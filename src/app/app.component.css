@@ -1,0 +1,11 @@
+/* Garante que o app ocupe a tela toda e o footer fique no fim */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* O router-outlet não é um elemento real no DOM para estilizar assim, mas garantimos que o container principal cresça */
+main {
+  flex: 1;
+}

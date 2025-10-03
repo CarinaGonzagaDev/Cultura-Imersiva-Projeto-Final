@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TopAvaliadosComponent } from './top-avaliados.component';
+import { FeatureCarouselComponent } from './feature-carousel.component';
 
-describe('TopAvaliadosComponent', () => {
-  let component: TopAvaliadosComponent;
-  let fixture: ComponentFixture<TopAvaliadosComponent>;
+describe('FeatureCarouselComponent', () => {
+  let component: FeatureCarouselComponent;
+  let fixture: ComponentFixture<FeatureCarouselComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TopAvaliadosComponent]
+      imports: [FeatureCarouselComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TopAvaliadosComponent);
+    fixture = TestBed.createComponent(FeatureCarouselComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
