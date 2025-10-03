@@ -1,0 +1,72 @@
+/* CSS adaptado do seu style-components.css para o card */
+.work-card {
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .work-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  }
+  
+  .card-img {
+    width: 100%;
+    /* Este truque de padding-top força a proporção da imagem */
+    padding-top: 140%; 
+    position: relative;
+    background-color: #333;
+  }
+  
+  .card-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .card-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .card-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .card-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: auto; /* Empurra o rating para o final */
+    padding-bottom: 0.5rem;
+  }
+  
+  .card-meta .separator {
+    margin: 0 0.4rem;
+  }
+  
+  .card-rating {
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+  }
+  
+  .star-icon {
+    color: #ffd700;
+    margin-right: 0.25rem;
+    font-size: 1.1rem;
+  }

@@ -1,0 +1,46 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MediaService, CarouselItem } from '../../services/media.service';
+import { MediaCardComponent } from '../../components/media-card/media-card.component';
+
+@Component({
+  selector: 'app-hqs',
+  standalone: true,
+  imports: [CommonModule, MediaCardComponent, FormsModule], // E QUE O FormsModule ESTEJA AQUI
+  templateUrl: './hqs.component.html',
+  styleUrl: '../anime/anime.component.css'
+})
+export class HqsComponent implements OnInit {
+
+  private allMangas: CarouselItem[] = [];
+  filteredMediaList: CarouselItem[] = [];
+  allGenres: string[] = [];
+  selectedGenres: { [key: string]: boolean } = {};
+  status: string = 'all';
+
+  constructor(private mediaService: MediaService) {}
+
+  ngOnInit(): void {
+    this.allMangas = this.mediaService.getMangas();
+    this.allGenres = [...new Set(this.allMangas.flatMap(m => m.genres))].sort();
+    this.applyFilters();
+  }
+
+  applyFilters(): void {
+    let result = [...this.allMangas];
+    const activeGenres = Object.keys(this.selectedGenres).filter(genre => this.selectedGenres[genre]);
+
+    if (activeGenres.length > 0) {
+      result = result.filter(item => 
+        activeGenres.every(genre => item.genres.includes(genre))
+      );
+    }
+
+    if (this.status !== 'all') {
+      result = result.filter(item => item.season === this.status);
+    }
+
+    this.filteredMediaList = result;
+  }
+}

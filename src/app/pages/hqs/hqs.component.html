@@ -1,0 +1,31 @@
+<main class="page-container">
+    <aside class="filters">
+      <h2>Filtros</h2>
+      <div class="filter-group">
+        <h3>Gênero</h3>
+        <label *ngFor="let genre of allGenres">
+          <input 
+            type="checkbox" 
+            [(ngModel)]="selectedGenres[genre]" 
+            (change)="applyFilters()">
+          {{ genre }}
+        </label>
+      </div>
+      <div class="filter-group">
+        <h3>Status</h3>
+        <label>
+          <input type="radio" name="status" value="all" [(ngModel)]="status" (change)="applyFilters()"> Todos
+        </label>
+        <label>
+          <input type="radio" name="status" value="Em Andamento" [(ngModel)]="status" (change)="applyFilters()"> Em Andamento
+        </label>
+        <label>
+          <input type="radio" name="status" value="Finalizado" [(ngModel)]="status" (change)="applyFilters()"> Finalizado
+        </label>
+      </div>
+    </aside>
+  
+    <section class="works-grid">
+      <app-media-card *ngFor="let item of filteredMediaList" [item]="item"></app-media-card>
+    </section>
+  </main>
