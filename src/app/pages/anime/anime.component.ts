@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MediaService, CarouselItem } from '../../services/media.service';
+
+// CORREÇÃO: Importar a classe MediaService e a interface Media
+import { MediaService, Media } from '../../components/media.service';
 import { MediaCardComponent } from '../../components/media-card/media-card.component';
 
 @Component({
@@ -13,13 +15,15 @@ import { MediaCardComponent } from '../../components/media-card/media-card.compo
 })
 export class AnimeComponent implements OnInit {
   
-  private allAnimes: CarouselItem[] = [];
-  filteredMediaList: CarouselItem[] = [];
+  // CORREÇÃO: Usar a interface Media
+  private allAnimes: Media[] = [];
+  filteredMediaList: Media[] = [];
   allGenres: string[] = [];
   selectedGenres: { [key: string]: boolean } = {};
   sortBy: string = 'popularity';
-  status: 'all' | 'Finalizado' | 'Em Lançamento' = 'all'; // Novo filtro de status
+  status: string = 'all';
 
+  // A injeção do serviço está correta
   constructor(private mediaService: MediaService) {}
 
   ngOnInit(): void {
@@ -30,21 +34,18 @@ export class AnimeComponent implements OnInit {
 
   applyFilters(): void {
     let result = [...this.allAnimes];
-
-    // Filtro de Gênero
     const activeGenres = Object.keys(this.selectedGenres).filter(genre => this.selectedGenres[genre]);
+
     if (activeGenres.length > 0) {
       result = result.filter(item => 
         activeGenres.every(genre => item.genres.includes(genre))
       );
     }
 
-    // Filtro de Status
     if (this.status !== 'all') {
       result = result.filter(item => item.status === this.status);
     }
 
-    // Ordenação
     if (this.sortBy === 'popularity') {
       result.sort((a, b) => b.rating - a.rating);
     }

@@ -1,11 +1,32 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router'; 
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink], 
+  imports: [RouterLink, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent { }
+export class HeaderComponent implements OnInit {
+  isLoggedIn$!: Observable<boolean>;
+  isDropdownOpen = false;
+
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void {
+    this.isLoggedIn$ = this.authService.isLoggedIn;
+  }
+
+  toggleDropdown(event: Event): void {
+    event.stopPropagation();
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
+}

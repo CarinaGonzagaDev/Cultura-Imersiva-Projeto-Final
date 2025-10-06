@@ -1,17 +1,26 @@
 <header>
-    <div class="header-container">
-      <a routerLink="home" class="logo">Cultura Imersiva</a>
-      
-      <nav class="main-nav">
-        <ul>
-          <li><a routerLink="/animes">Animes</a></li>
-          <li><a routerLink="/hqs">HQs</a></li>
-          <li><a routerLink="/meus-favoritos">Meus Favoritos</a></li>
-        </ul>
-      </nav>
-  
-      <div class="user-actions">
-        <a routerLink="/login" class="login-btn">Entre</a>
-      </div>
+  <div class="header-container">
+    <a routerLink="/home" class="logo">Cultura Imersiva</a>
+    
+    <nav class="main-nav">
+      <ul>
+        <li><a routerLink="/animes">Animes</a></li>
+        <li><a routerLink="/hqs">HQs</a></li>
+        <li *ngIf="isLoggedIn$ | async"><a routerLink="/meus-favoritos">Meus Favoritos</a></li>
+      </ul>
+    </nav>
+
+    <div class="user-actions">
+      <ng-container *ngIf="isLoggedIn$ | async; else showLogin">
+        <button (click)="logout()" class="login-btn">Sair</button>
+      </ng-container>
+      <ng-template #showLogin>
+        <button class="login-btn" (click)="toggleDropdown($event)">Entre</button>
+        <div class="dropdown-menu" [class.show]="isDropdownOpen">
+          <a routerLink="/login">Login</a>
+          <a routerLink="/cadastro">Cadastro</a>
+        </div>
+      </ng-template>
     </div>
-  </header>
+  </div>
+</header>

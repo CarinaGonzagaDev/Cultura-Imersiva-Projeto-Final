@@ -1,9 +1,11 @@
 import { Routes } from "@angular/router";
-import { CadastroComponent } from "./cadastro/cadastro.component";
 import { HomeComponent } from "./components/home/home.component";
-import { LoginComponent } from "./login/login.component";
 import { HqsComponent } from "./pages/hqs/hqs.component";
 import { AnimeComponent } from "./pages/anime/anime.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { CadastroComponent } from "./pages/cadastro/cadastro.component";
+import { TermosDeUsoComponent } from "./pages/termos-de-uso/termos-de-uso.component";
+import { PoliticaDePrivacidadeComponent } from "./pages/politica-de-privacidade/politica-de-privacidade.component";
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -12,4 +14,6 @@ export const routes: Routes = [
     { path: 'cadastro', component: CadastroComponent},
     { path: 'animes', component: AnimeComponent },
     { path: 'hqs', component: HqsComponent },
+    { path: 'termos-de-uso', component: TermosDeUsoComponent },
+    { path: 'politica-de-privacidade', component: PoliticaDePrivacidadeComponent },
 ];

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HeroComponent } from '../../components/hero/hero.component';
 import { FeaturedCarouselComponent } from '../../components/featured-carousel/featured-carousel.component';
 
-// Importe o serviço e a interface
-import { MediaService, CarouselItem } from '../../services/media.service';
+// CORREÇÃO: Importar a classe MediaService e a interface Media
+import { MediaService, Media } from '../media.service';
 
 @Component({
   selector: 'app-home',
@@ -17,16 +17,14 @@ import { MediaService, CarouselItem } from '../../services/media.service';
 })
 export class HomeComponent implements OnInit {
 
-  // Arrays que receberão os dados do serviço
-  animes: CarouselItem[] = [];
-  mangas: CarouselItem[] = [];
+  // CORREÇÃO: Usar a interface Media
+  animes: Media[] = [];
+  mangas: Media[] = [];
 
-  // Injeta o serviço no construtor
+  // A injeção do serviço está correta, e agora funcionará com o import certo
   constructor(private mediaService: MediaService) {}
 
-  // "ngOnInit" é um método que roda quando o componente é iniciado
   ngOnInit(): void {
-    // Puxamos os dados do serviço e preenchemos os arrays locais
     this.animes = this.mediaService.getAnimes();
     this.mangas = this.mediaService.getMangas();
   }

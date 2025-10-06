@@ -1,24 +1,25 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CarouselItem } from '../../services/media.service'; // Importando a interface do serviço
+import { RouterLink } from '@angular/router';
+
+// CORREÇÃO: Importar a interface 'Media' do serviço
+import { Media } from '../media.service';
 
 @Component({
   selector: 'app-featured-carousel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './featured-carousel.component.html',
-  // CORREÇÃO AQUI: Apontando para o arquivo .css correto
   styleUrl: './featured-carousel.component.css'
 })
 export class FeaturedCarouselComponent {
-  // O export da interface foi movido para o serviço, o resto continua igual
   @Input() title: string = '';
-  @Input() items: CarouselItem[] = [];
+  // CORREÇÃO: O tipo dos itens agora é 'Media'
+  @Input() items: Media[] = [];
 
   currentIndex = 0;
 
   next() {
-    // Lógica para 4 itens por vez
     if (this.currentIndex < this.items.length - 4) {
       this.currentIndex++;
     }

@@ -1,0 +1,31 @@
+<main class="auth-container">
+    <div class="auth-form">
+        <h1>Crie sua Conta</h1>
+        <form (submit)="register($event)">
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group terms">
+                <input type="checkbox" id="terms" name="terms">
+                <label for="terms">
+                    Eu li e aceito os <a routerLink="/termos-de-uso" target="_blank">Termos de Uso</a> e a <a routerLink="/politica-de-privacidade" target="_blank">Política de Privacidade</a>.
+                </label>
+            </div>
+
+            <button type="submit" class="auth-button" id="register-button">Cadastrar</button>
+        </form>
+        <p class="auth-link">
+            Já tem uma conta? <a routerLink="/login">Faça login</a>
+        </p>
+    </div>
+</main>

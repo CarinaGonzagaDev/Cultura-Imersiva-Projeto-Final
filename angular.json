@@ -27,7 +27,9 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/auth.css",
+              "src/app/legal.css"
             ],
             "scripts": []
           },
