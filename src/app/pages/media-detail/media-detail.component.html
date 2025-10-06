@@ -1,0 +1,39 @@
+<main *ngIf="media" class="detail-container">
+    <div class="detail-header">
+      <div class="poster">
+        <img [src]="media.image" [alt]="media.title">
+      </div>
+      <div class="info">
+        <h1>{{ media.title }} ({{ media.releaseYear }})</h1>
+        <p class="author-studio">
+          <strong>Autor:</strong> {{ media.author }}
+          <span *ngIf="media.studio"> | <strong>Estúdio:</strong> {{ media.studio }}</span>
+        </p>
+  
+        <div class="genres">
+          <span *ngFor="let genre of media.genres" class="genre-tag">{{ genre }}</span>
+        </div>
+  
+        <app-status-tracker [mediaType]="media.type"></app-status-tracker>
+        
+        <h3>Sinopse</h3>
+        <p class="synopsis">{{ media.synopsis }}</p>
+  
+        <h3>Onde {{ media.type === 'anime' ? 'Assistir' : 'Ler' }} no Brasil</h3>
+        <ul class="platform-list">
+          <li *ngFor="let source of media.whereToWatchRead">
+            <strong>{{ source.platform }}:</strong> {{ source.options.join(', ') }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="content-body">
+      <section class="episodes-section">
+          <h2>Episódios / Capítulos</h2>
+          <p>(Funcionalidade a ser implementada)</p>
+      </section>
+  
+      <app-comment-section></app-comment-section>
+    </div>
+  </main>

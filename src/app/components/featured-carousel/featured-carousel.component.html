@@ -6,28 +6,19 @@
       <div class="carousel-track" [style.transform]="getCarouselTransform()">
         
         <div *ngFor="let item of items" class="carousel-item">
-          <a [routerLink]="['/', item.type, item.id]">
-            <img [src]="item.image" [alt]="item.title">
-            <div class="item-info">
-              <h3>{{ item.title }}</h3>
-              <div class="item-details">
-                <ng-container *ngIf="item.type === 'anime'">
-                  <span *ngIf="item.totalSeasons">{{ item.totalSeasons }} Temporada(s)</span>
-                  <span *ngIf="item.totalSeasons && item.totalEpisodes">•</span>
-                  <span *ngIf="item.totalEpisodes">{{ item.totalEpisodes }} Episódios</span>
-                </ng-container>
-                <ng-container *ngIf="item.type === 'hq'">
-                  <span>{{ item.status }}</span>
-                  <span *ngIf="item.totalChapters">•</span>
-                  <span *ngIf="item.totalChapters">{{ item.totalChapters }} Capítulos</span>
-                </ng-container>
-              </div>
-              <div class="item-rating">
-                <span class="star">★</span>
-                <span>{{ item.rating }} (Global)</span>
-              </div>
+          <img [src]="item.image" [alt]="item.title">
+          <div class="item-info">
+            <h3>{{ item.title }}</h3>
+            <div class="item-details">
+              <span>{{ item.season }}</span>
+              <span>•</span>
+              <span>{{ item.episodes }}</span>
             </div>
-          </a>
+            <div class="item-rating">
+              <span class="star">★</span>
+              <span>{{ item.rating }} (Global)</span>
+            </div>
+          </div>
         </div>
 
       </div>

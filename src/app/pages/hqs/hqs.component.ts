@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// 1. CORREÇÃO: Importar a CLASSE MediaService e a INTERFACE Media
-import { MediaService, Media } from '../../components/media.service'; 
+import { MediaService, CarouselItem } from '../../services/media.service'; // <-- Caminho corrigido
 import { MediaCardComponent } from '../../components/media-card/media-card.component';
 
 @Component({
@@ -14,9 +13,8 @@ import { MediaCardComponent } from '../../components/media-card/media-card.compo
 })
 export class HqsComponent implements OnInit {
 
-  // 2. CORREÇÃO: Usar o tipo Media em vez de CarouselItem
-  private allMangas: Media[] = [];
-  filteredMediaList: Media[] = [];
+  private allMangas: CarouselItem[] = [];
+  filteredMediaList: CarouselItem[] = [];
   allGenres: string[] = [];
   
   countries = ["Todos", "Japão (Mangá)", "Coreia do Sul (Manhwa)", "China (Manhua)", "Brasil (Quadrinho)", "EUA (Comic)"];
@@ -26,7 +24,6 @@ export class HqsComponent implements OnInit {
   country: string = 'Todos';
   sortBy: string = 'popularity';
 
-  // 3. CORREÇÃO: A injeção de dependência agora funciona
   constructor(private mediaService: MediaService) {}
 
   ngOnInit(): void {
@@ -41,12 +38,12 @@ export class HqsComponent implements OnInit {
 
     if (activeGenres.length > 0) {
       result = result.filter(item => 
-        'genres' in item && activeGenres.every(genre => item.genres.includes(genre))
+        activeGenres.every(genre => item.genres.includes(genre))
       );
     }
 
     if (this.status !== 'all') {
-      result = result.filter(item => item.status === this.status);
+      result = result.filter(item => item.season === this.status);
     }
 
     if (this.country !== 'Todos') {

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroComponent } from '../../components/hero/hero.component';
-import { FeaturedCarouselComponent } from '../../components/featured-carousel/featured-carousel.component';
-
-// CORREÇÃO: Importar a classe MediaService e a interface Media
-import { MediaService, Media } from '../media.service';
+import { HeroComponent } from '../hero/hero.component';
+import { FeaturedCarouselComponent } from '../featured-carousel/featured-carousel.component';
+import { MediaService, CarouselItem } from '../../services/media.service'; // <-- Caminho corrigido
 
 @Component({
   selector: 'app-home',
@@ -17,11 +15,9 @@ import { MediaService, Media } from '../media.service';
 })
 export class HomeComponent implements OnInit {
 
-  // CORREÇÃO: Usar a interface Media
-  animes: Media[] = [];
-  mangas: Media[] = [];
+  animes: CarouselItem[] = [];
+  mangas: CarouselItem[] = [];
 
-  // A injeção do serviço está correta, e agora funcionará com o import certo
   constructor(private mediaService: MediaService) {}
 
   ngOnInit(): void {

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-// CORREÇÃO: Importar a classe MediaService e a interface Media
-import { MediaService, Media } from '../../components/media.service';
+import { MediaService, CarouselItem } from '../../services/media.service'; // <-- Caminho corrigido
 import { MediaCardComponent } from '../../components/media-card/media-card.component';
 
 @Component({
@@ -15,15 +13,13 @@ import { MediaCardComponent } from '../../components/media-card/media-card.compo
 })
 export class AnimeComponent implements OnInit {
   
-  // CORREÇÃO: Usar a interface Media
-  private allAnimes: Media[] = [];
-  filteredMediaList: Media[] = [];
+  private allAnimes: CarouselItem[] = [];
+  filteredMediaList: CarouselItem[] = [];
   allGenres: string[] = [];
   selectedGenres: { [key: string]: boolean } = {};
   sortBy: string = 'popularity';
-  status: string = 'all';
+  status: 'all' | 'Finalizado' | 'Em Lançamento' = 'all';
 
-  // A injeção do serviço está correta
   constructor(private mediaService: MediaService) {}
 
   ngOnInit(): void {
@@ -34,8 +30,8 @@ export class AnimeComponent implements OnInit {
 
   applyFilters(): void {
     let result = [...this.allAnimes];
-    const activeGenres = Object.keys(this.selectedGenres).filter(genre => this.selectedGenres[genre]);
 
+    const activeGenres = Object.keys(this.selectedGenres).filter(genre => this.selectedGenres[genre]);
     if (activeGenres.length > 0) {
       result = result.filter(item => 
         activeGenres.every(genre => item.genres.includes(genre))

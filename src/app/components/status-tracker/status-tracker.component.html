@@ -1,0 +1,18 @@
+<p>status-tracker works!</p>
+<div class="status-container">
+    <ng-container *ngIf="mediaType === 'anime'">
+      <button *ngFor="let status of animeStatuses" 
+              (click)="setStatus(status)"
+              [class.active]="currentStatus === status">
+        {{ status }}
+      </button>
+    </ng-container>
+    
+    <ng-container *ngIf="mediaType === 'hq'">
+      <button *ngFor="let status of hqStatuses" 
+              (click)="setStatus(status)"
+              [class.active]="currentStatus === status">
+        {{ status }}
+      </button>
+    </ng-container>
+  </div>

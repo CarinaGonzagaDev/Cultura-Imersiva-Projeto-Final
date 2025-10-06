@@ -1,18 +1,16 @@
-<div class="work-card">
-    <div class="work-card">
-        <div class="card-img">
-        <img [src]="item.image" [alt]="item.title">
-        </div>
+<a [routerLink]="['/', item.type, item.id]" class="work-card">
+  <div class="card-img">
+    <img [src]="item.image" [alt]="item.title">
+  </div>
+  <div class="card-info">
+    <h3>{{ item.title }}</h3>
+    <div class="card-meta">
+      <span>{{ item.season }}</span>
+      <span class="separator">|</span>
+      <span>{{ item.episodes }}</span>
     </div>
-    <div class="card-info">
-      <h3>{{ item.title }}</h3>
-      <div class="card-meta">
-        <span>{{ item.season }}</span>
-        <span class="separator">|</span>
-        <span>{{ item.episodes }}</span>
-      </div>
-      <div class="card-rating">
-        <span class="star-icon">★</span> {{ item.rating }}
-      </div>
+    <div class="card-rating">
+      <span class="star-icon">★</span> {{ item.rating }}
     </div>
   </div>
+</a>

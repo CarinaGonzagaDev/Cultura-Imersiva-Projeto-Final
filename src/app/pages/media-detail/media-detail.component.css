@@ -1,0 +1,60 @@
+.detail-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
+  
+  .detail-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .poster {
+    width: 300px;
+    flex-shrink: 0;
+  }
+  
+  .poster img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  .info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .author-studio {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+  
+  .genres {
+    margin-bottom: 1.5rem;
+  }
+  
+  .genre-tag {
+    display: inline-block;
+    background-color: var(--surface-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .synopsis {
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  
+  .platform-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .content-body {
+    margin-top: 2rem;
+  }
