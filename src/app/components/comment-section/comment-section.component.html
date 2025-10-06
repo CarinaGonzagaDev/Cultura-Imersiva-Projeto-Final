@@ -1,15 +1,24 @@
 <section class="comments-container">
     <h2>Comentários e Avaliações</h2>
   
-    <div class="comment-form">
+    <ng-container *ngIf="isLoggedIn$ | async; else showLoginPrompt">
+      <div class="comment-form">
         <h3>Deixe sua avaliação</h3>
         <div class="rating-input">
-            <input type="number" min="1" max="10" [(ngModel)]="newCommentRating">
-            <span>/ 10</span>
+          <input type="number" min="1" max="10" [(ngModel)]="newCommentRating">
+          <span>/ 10</span>
         </div>
         <textarea placeholder="Escreva seu comentário..." [(ngModel)]="newCommentText"></textarea>
         <button (click)="addComment()">Enviar Comentário</button>
-    </div>
+      </div>
+    </ng-container>
+  
+    <ng-template #showLoginPrompt>
+      <div class="login-prompt">
+        <p>Você precisa estar logado para comentar e avaliar.</p>
+        <a routerLink="/login">Fazer Login</a>
+      </div>
+    </ng-template>
   
     <div class="comment-list" *ngIf="showComments">
       <div class="comment" *ngFor="let comment of comments">
