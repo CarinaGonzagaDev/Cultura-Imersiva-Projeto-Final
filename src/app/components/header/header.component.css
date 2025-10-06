@@ -1,5 +1,68 @@
-/* Adicione isso ao seu arquivo src/app/components/header/header.component.css */
+/* --- ESTILOS DO HEADER --- */
+header {
+  background-color: var(--surface-color);
+  border-bottom: 1px solid #2a2a2a;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary); /* Corrigido de volta para a cor primária do texto */
+  text-decoration: none;
+}
+
+.main-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+/* Estilo base para os links de navegação */
+.main-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: var(--primary-color);
+}
+
+.login-btn {
+  background-color: var(--primary-color);
+  color: #121212; /* Texto escuro para contraste */
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px; /* Raio de borda original */
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  border: none; /* Garante que não haja borda no botão */
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif; /* Garante a mesma fonte */
+  font-size: 1rem; /* Garante o mesmo tamanho de fonte */
+}
+
+.login-btn:hover {
+  background-color: #d1b1fc; /* Roxo mais claro no hover */
+}
+
+/* --- ESTILOS DO DROPDOWN DE LOGIN --- */
 .user-actions {
   position: relative;
 }
