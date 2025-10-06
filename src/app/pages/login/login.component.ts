@@ -7,8 +7,8 @@ import { AuthService } from '../../services/auth.service'; // <-- Caminho corret
   standalone: true,
   imports: [RouterLink],
   templateUrl: './login.component.html'
-  // A linha styleUrls foi removida
 })
+
 export class LoginComponent {
   constructor(private authService: AuthService) {}
 
