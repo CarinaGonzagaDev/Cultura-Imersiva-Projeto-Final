@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroComponent } from '../hero/hero.component';
 import { FeaturedCarouselComponent } from '../featured-carousel/featured-carousel.component';
-import { MediaService, CarouselItem } from '../../services/media.service'; // <-- Caminho corrigido
+import { MediaService, Media } from '../../services/media.service'; // CORREÇÃO: Importando 'Media'
 
 @Component({
   selector: 'app-home',
@@ -15,8 +15,8 @@ import { MediaService, CarouselItem } from '../../services/media.service'; // <-
 })
 export class HomeComponent implements OnInit {
 
-  animes: CarouselItem[] = [];
-  mangas: CarouselItem[] = [];
+  animes: Media[] = []; // CORREÇÃO: Usando o tipo 'Media'
+  mangas: Media[] = []; // CORREÇÃO: Usando o tipo 'Media'
 
   constructor(private mediaService: MediaService) {}
 

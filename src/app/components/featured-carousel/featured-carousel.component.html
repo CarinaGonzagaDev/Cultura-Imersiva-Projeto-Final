@@ -6,19 +6,7 @@
       <div class="carousel-track" [style.transform]="getCarouselTransform()">
         
         <div *ngFor="let item of items" class="carousel-item">
-          <img [src]="item.image" [alt]="item.title">
-          <div class="item-info">
-            <h3>{{ item.title }}</h3>
-            <div class="item-details">
-              <span>{{ item.season }}</span>
-              <span>•</span>
-              <span>{{ item.episodes }}</span>
-            </div>
-            <div class="item-rating">
-              <span class="star">★</span>
-              <span>{{ item.rating }} (Global)</span>
-            </div>
-          </div>
+          <app-media-card [item]="item"></app-media-card>
         </div>
 
       </div>

@@ -1,1 +1,24 @@
-<p>comment-section works!</p>
+<section class="comments-container">
+    <h2>Comentários e Avaliações</h2>
+  
+    <div class="comment-form">
+        <h3>Deixe sua avaliação</h3>
+        <div class="rating-input">
+            <input type="number" min="1" max="10" [(ngModel)]="newCommentRating">
+            <span>/ 10</span>
+        </div>
+        <textarea placeholder="Escreva seu comentário..." [(ngModel)]="newCommentText"></textarea>
+        <button (click)="addComment()">Enviar Comentário</button>
+    </div>
+  
+    <div class="comment-list" *ngIf="showComments">
+      <div class="comment" *ngFor="let comment of comments">
+        <div class="comment-header">
+          <span class="comment-user">{{ comment.user }}</span>
+          <span class="comment-rating">★ {{ comment.rating }}</span>
+        </div>
+        <p class="comment-text">{{ comment.text }}</p>
+        <span class="comment-date">{{ comment.date | date: 'dd/MM/yyyy' }}</span>
+      </div>
+    </div>
+  </section>

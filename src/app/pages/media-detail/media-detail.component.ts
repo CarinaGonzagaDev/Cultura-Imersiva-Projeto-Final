@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router'; // Importe para pegar o ID da URL
-import { Media, MediaService } from '../../components/media.service';
-
-// Importe os novos componentes de interação
+import { ActivatedRoute, Router } from '@angular/router';
+// CORREÇÃO: O caminho correto para o serviço
+import { Media, MediaService } from '../../services/media.service'; 
 import { StatusTrackerComponent } from '../../components/status-tracker/status-tracker.component';
 import { CommentSectionComponent } from '../../components/comment-section/comment-section.component';
 
@@ -25,15 +24,12 @@ export class MediaDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Pega o parâmetro 'id' da URL
     const mediaId = this.route.snapshot.paramMap.get('id');
 
     if (mediaId) {
-      // Busca a obra no serviço usando o ID
       this.media = this.mediaService.getMediaById(mediaId);
     }
 
-    // Se a obra não for encontrada, redireciona para a home
     if (!this.media) {
       this.router.navigate(['/home']);
     }

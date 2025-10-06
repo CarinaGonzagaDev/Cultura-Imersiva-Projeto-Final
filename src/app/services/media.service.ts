@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-export interface CarouselItem {
+// A interface agora se chama 'Media'
+export interface Media {
   id: number;
   type: 'anime' | 'hq';
   image: string;
@@ -9,8 +10,16 @@ export interface CarouselItem {
   season: string;
   episodes: string;
   genres: string[];
-  status?: 'Finalizado' | 'Em Lançamento';
+  status?: 'Finalizado' | 'Em Lançamento' | 'Em Andamento';
   country?: string;
+  releaseYear: number;
+  author: string;
+  studio?: string;
+  ageRating: string;
+  audio: string[];
+  alternativeNames: string[];
+  synopsis: string;
+  whereToWatchRead: { platform: string; options: string[] }[];
 }
 
 @Injectable({
@@ -18,74 +27,60 @@ export interface CarouselItem {
 })
 export class MediaService {
 
-  private animes: CarouselItem[] = [
-    { 
-      id: 1, type: 'anime', image: 'Jujutsu Kaisen.jpg', title: 'Jujutsu Kaisen', 
+  private animes: Media[] = [
+    {
+      id: 1, type: 'anime', image: 'Jujutsu Kaisen.jpg', title: 'Jujutsu Kaisen',
       season: 'S2', episodes: 'E23', rating: 8.7,
-      genres: ['Ação', 'Fantasia', 'Shonen', 'Sobrenatural'], status: 'Em Lançamento'
-    },
-    { 
-      id: 2, type: 'anime', image: 'Kimetsu no Yaiba.jpg', title: 'Kimetsu no Yaiba', 
-      season: 'S4', episodes: 'E8', rating: 9.8,
-      genres: ['Ação', 'Aventura', 'Shonen', 'Sobrenatural'], status: 'Em Lançamento'
-    },
-    { 
-      id: 3, type: 'anime', image: 'Chainsaw Man.jpg', title: 'Chainsaw Man', 
-      season: 'S1', episodes: 'E12', rating: 9.8,
-      genres: ['Ação', 'Fantasia Sombria', 'Horror', 'Shonen'], status: 'Finalizado'
-    },
-    { 
-      id: 4, type: 'anime', image: 'Dandadan.jpg', title: 'Dandadan', 
-      season: 'S1', episodes: 'E12', rating: 9.8,
-      genres: ['Comédia', 'Ficção Científica', 'Ação', 'Sobrenatural'], status: 'Em Lançamento'
-    },
-    { 
-      id: 5, type: 'anime', image: 'Attack On Titan.jpg', title: 'Attack on Titan', 
-      season: 'S4', episodes: 'E28', rating: 9.3,
-      genres: ['Ação', 'Suspense', 'Drama', 'Fantasia Sombria'], status: 'Finalizado'
+      genres: ['Ação', 'Fantasia', 'Shonen', 'Sobrenatural'], status: 'Em Lançamento',
+      releaseYear: 2020, author: 'Gege Akutami', studio: 'MAPPA', ageRating: '16+',
+      audio: ['Legendado', 'Dublado'], alternativeNames: ['Sorcery Fight'],
+      synopsis: 'Sofrimento, arrependimento, vergonha: os sentimentos negativos dos humanos tornam-se Maldições, causando acidentes terríveis que podem levar até mesmo à morte. E, para piorar, Maldições só podem ser exorcizadas por outras Maldições.',
+      whereToWatchRead: [
+        { platform: 'Crunchyroll', options: ['Premium'] }
+      ]
     },
     {
-      id: 6, type: 'anime', image: 'SAKAMOTO DAYS.jpg', title: 'Sakamoto Days',
-      season: 'S1', episodes: 'E12', rating: 9.1,
-      genres: ['Ação', 'Comédia', 'Shonen', 'Slice of Life'], status: 'Em Lançamento'
-    }
+      id: 2, type: 'anime', image: 'Kimetsu no Yaiba.jpg', title: 'Kimetsu no Yaiba',
+      season: 'S4', episodes: 'E8', rating: 9.8,
+      genres: ['Ação', 'Aventura', 'Shonen', 'Sobrenatural'], status: 'Em Lançamento',
+      releaseYear: 2019, author: 'Koyoharu Gotouge', studio: 'ufotable', ageRating: '16+',
+      audio: ['Legendado', 'Dublado'], alternativeNames: ['Demon Slayer'],
+      synopsis: 'Japão, era Taisho. Tanjiro, um bondoso jovem que ganha a vida vendendo carvão, descobre que sua família foi massacrada por um demônio. E pra piorar, Nezuko, sua irmã mais nova e única sobrevivente, também foi transformada em um demônio.',
+      whereToWatchRead: [
+        { platform: 'Crunchyroll', options: ['Premium'] },
+        { platform: 'Netflix', options: ['Assinatura'] }
+      ]
+    },
+    // Adicione os outros animes aqui seguindo a mesma estrutura
   ];
 
-  private mangas: CarouselItem[] = [
-    { 
-      id: 11, type: 'hq', image: 'One Piece Mangá.jpg', title: 'One Piece', 
+  private mangas: Media[] = [
+    {
+      id: 11, type: 'hq', image: 'One Piece Mangá.jpg', title: 'One Piece',
       season: 'Em Andamento', episodes: '1161 Caps.', rating: 9.9,
-      genres: ['Aventura', 'Fantasia', 'Ação', 'Shonen'], country: 'Japão (Mangá)'
+      genres: ['Aventura', 'Fantasia', 'Ação', 'Shonen'], country: 'Japão (Mangá)',
+      releaseYear: 1997, author: 'Eiichiro Oda', ageRating: '12+',
+      audio: [], alternativeNames: [],
+      synopsis: 'A série foca em Monkey D. Luffy, um jovem feito de borracha, que, inspirado em seu ídolo de infância, o poderoso pirata Shanks, o Ruivo, parte em uma jornada do mar do East Blue para encontrar o tesouro mítico, o One Piece, e proclamar-se o Rei dos Piratas.',
+      whereToWatchRead: [
+        { platform: 'Manga Plus', options: ['Grátis (últimos capítulos)'] }
+      ]
     },
-    { 
-      id: 12, type: 'hq', image: 'Look Back Mangá.jpg', title: 'Look Back', 
-      season: 'Finalizado', episodes: '1 Cap.', rating: 9.5,
-      genres: ['Drama', 'Slice of Life'], country: 'Japão (Mangá)'
-    },
-    { 
-      id: 13, type: 'hq', image: 'Otoyomegatari Mangá.jpg', title: 'A Bride\'s Story', 
-      season: 'Em Andamento', episodes: '112 Caps.', rating: 9.7,
-      genres: ['Histórico', 'Romance', 'Slice of Life', 'Seinen'], country: 'Japão (Mangá)'
-    },
-    { 
-      id: 14, type: 'hq', image: 'Battle Angel Alita Mangá.jpg', title: 'Battle Angel Alita', 
-      season: 'Finalizado', episodes: '51 Caps.', rating: 9.3,
-      genres: ['Ação', 'Ficção Científica', 'Psicológico', 'Seinen'], country: 'Japão (Mangá)'
-    },
-    { 
-      id: 15, type: 'hq', image: 'Dragon Ball Mangá.jpg', title: 'Dragon Ball Super', 
-      season: 'Em Andamento', episodes: '104 Caps.', rating: 8.5,
-      genres: ['Ação', 'Aventura', 'Shonen'], country: 'Japão (Mangá)'
-    },
+    // Adicione os outros mangás aqui seguindo a mesma estrutura
   ];
 
   constructor() { }
 
-  getAnimes(): CarouselItem[] {
+  getAnimes(): Media[] {
     return this.animes;
   }
 
-  getMangas(): CarouselItem[] {
+  getMangas(): Media[] {
     return this.mangas;
+  }
+
+  getMediaById(id: string): Media | undefined {
+    const allMedia = [...this.animes, ...this.mangas];
+    return allMedia.find(media => media.id.toString() === id);
   }
 }

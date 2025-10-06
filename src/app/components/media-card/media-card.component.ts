@@ -1,16 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router'; // <-- 1. IMPORTAR RouterLink
-import { CarouselItem } from '../../services/media.service'; // <-- 2. USAR CarouselItem
+import { RouterLink } from '@angular/router';
+// CORREÇÃO: Importar 'Media' em vez de 'CarouselItem'
+import { Media } from '../../services/media.service'; 
 
 @Component({
   selector: 'app-media-card',
   standalone: true,
-  imports: [CommonModule, RouterLink], // <-- 3. ADICIONAR RouterLink AQUI
+  imports: [CommonModule, RouterLink],
   templateUrl: './media-card.component.html',
   styleUrl: './media-card.component.css'
 })
 export class MediaCardComponent {
-  // 4. USAR O TIPO CORRETO
-  @Input() item!: CarouselItem;
+  @Input() item!: Media; 
 }

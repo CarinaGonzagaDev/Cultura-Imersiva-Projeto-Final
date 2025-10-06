@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MediaService, CarouselItem } from '../../services/media.service'; // <-- Caminho corrigido
+// CORREÇÃO: Importar 'Media'
+import { MediaService, Media } from '../../services/media.service'; 
 import { MediaCardComponent } from '../../components/media-card/media-card.component';
 
 @Component({
@@ -13,8 +14,8 @@ import { MediaCardComponent } from '../../components/media-card/media-card.compo
 })
 export class AnimeComponent implements OnInit {
   
-  private allAnimes: CarouselItem[] = [];
-  filteredMediaList: CarouselItem[] = [];
+  private allAnimes: Media[] = []; // CORREÇÃO
+  filteredMediaList: Media[] = []; // CORREÇÃO
   allGenres: string[] = [];
   selectedGenres: { [key: string]: boolean } = {};
   sortBy: string = 'popularity';

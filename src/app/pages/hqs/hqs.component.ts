@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MediaService, CarouselItem } from '../../services/media.service'; // <-- Caminho corrigido
+// CORREÇÃO: Importar 'Media'
+import { MediaService, Media } from '../../services/media.service'; 
 import { MediaCardComponent } from '../../components/media-card/media-card.component';
 
 @Component({
@@ -13,8 +14,8 @@ import { MediaCardComponent } from '../../components/media-card/media-card.compo
 })
 export class HqsComponent implements OnInit {
 
-  private allMangas: CarouselItem[] = [];
-  filteredMediaList: CarouselItem[] = [];
+  private allMangas: Media[] = []; // CORREÇÃO
+  filteredMediaList: Media[] = []; // CORREÇÃO
   allGenres: string[] = [];
   
   countries = ["Todos", "Japão (Mangá)", "Coreia do Sul (Manhwa)", "China (Manhua)", "Brasil (Quadrinho)", "EUA (Comic)"];
