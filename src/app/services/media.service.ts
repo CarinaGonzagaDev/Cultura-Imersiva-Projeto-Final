@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 // A interface agora se chama 'Media'
 export interface Media {
@@ -168,5 +169,9 @@ export class MediaService {
   getMediaById(id: string): Media | undefined {
     const allMedia = [...this.animes, ...this.mangas];
     return allMedia.find(media => media.id.toString() === id);
+  }
+
+  getAllMedia(): Observable<Media[]> {
+    return of([...this.animes, ...this.mangas]);
   }
 }
