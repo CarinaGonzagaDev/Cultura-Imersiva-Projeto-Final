@@ -14,7 +14,15 @@ export class CadastroComponent {
 
   register(event: Event): void {
     event.preventDefault();
-    const termsCheckbox = (event.target as HTMLFormElement).querySelector('#terms') as HTMLInputElement;
+    const form = event.target as HTMLFormElement;
+    const passwordInput = form.querySelector('#password') as HTMLInputElement;
+    const termsCheckbox = form.querySelector('#terms') as HTMLInputElement;
+
+    if (passwordInput.value.length < 6) {
+      alert('A senha deve ter no mínimo 6 caracteres.');
+      return;
+    }
+
     if (termsCheckbox.checked) {
       this.authService.login();
     } else {
