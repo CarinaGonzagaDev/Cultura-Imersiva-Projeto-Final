@@ -28,8 +28,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/app/auth.css",
-              "src/app/legal.css"
+              "src/app/components/auth.css",
+              "src/app/components/legal.css"
             ],
             "scripts": []
           },
