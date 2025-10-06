@@ -1,11 +1,7 @@
-/*
-Novo arquivo: src/app/components/comment-section/comment-section.component.css
-*/
 .comments-container {
-    background-color: var(--surface-color);
+    background-color: #161616;
     padding: 2rem;
     border-radius: 8px;
-    margin-top: 2rem;
   }
   
   .comments-container h2 {
@@ -16,35 +12,13 @@ Novo arquivo: src/app/components/comment-section/comment-section.component.css
   }
   
   .comment-form {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
   
   .comment-form h3 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
-  }
-  
-  .rating-input {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .rating-input input {
-    width: 60px;
-    padding: 0.5rem;
-    background-color: #2c2c2c;
-    border: 1px solid #444;
-    border-radius: 6px;
-    color: var(--text-primary);
-    font-size: 1rem;
-    text-align: center;
-  }
-  
-  .rating-input span {
-    color: var(--text-secondary);
   }
   
   .comment-form textarea {
@@ -86,6 +60,7 @@ Novo arquivo: src/app/components/comment-section/comment-section.component.css
     padding: 2rem;
     border: 2px dashed #444;
     border-radius: 8px;
+    margin: 2rem 0;
   }
   
   .login-prompt p {
@@ -97,8 +72,16 @@ Novo arquivo: src/app/components/comment-section/comment-section.component.css
     margin-top: 2rem;
   }
   
+  .no-comments {
+      text-align: center;
+      color: var(--text-secondary);
+      padding: 2rem;
+      background-color: var(--surface-color);
+      border-radius: 8px;
+  }
+  
   .comment {
-    background-color: #2c2c2c;
+    background-color: var(--surface-color);
     padding: 1.5rem;
     border-radius: 8px;
     margin-bottom: 1.5rem;
@@ -106,9 +89,6 @@ Novo arquivo: src/app/components/comment-section/comment-section.component.css
   }
   
   .comment-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 1rem;
   }
   
@@ -117,18 +97,26 @@ Novo arquivo: src/app/components/comment-section/comment-section.component.css
     color: var(--text-primary);
   }
   
-  .comment-rating {
-    font-weight: 600;
-    color: #ffd700;
-  }
-  
   .comment-text {
     line-height: 1.6;
     color: var(--text-secondary);
     margin-bottom: 1rem;
+    white-space: pre-wrap;
   }
   
-  .comment-date {
-    font-size: 0.8rem;
-    color: #888;
+  .comment-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #888;
+      flex-wrap: wrap;
+      gap: 1rem;
+  }
+  
+  .comment-progress {
+      font-style: italic;
+      background-color: rgba(0,0,0,0.2);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
   }

@@ -1,39 +1,99 @@
 <main *ngIf="media" class="detail-container">
-    <div class="detail-header">
-      <div class="poster">
-        <img [src]="'/' + media.image" [alt]="media.title">
-      </div>
-      <div class="info">
-        <h1>{{ media.title }} ({{ media.releaseYear }})</h1>
-        <p class="author-studio">
-          <strong>Autor:</strong> {{ media.author }}
-          <span *ngIf="media.studio"> | <strong>Estúdio:</strong> {{ media.studio }}</span>
-        </p>
-
-        <div class="genres">
-          <span *ngFor="let genre of media.genres" class="genre-tag">{{ genre }}</span>
+    <div class="detail-header" [style.background-image]="'url(/' + media.image + ')'">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="poster"><img [src]="'/' + media.image" [alt]="media.title"></div>
+            <div class="info">
+                <h1>{{ media.title }} ({{ media.releaseYear }})</h1>
+                <p class="author-studio">
+                    <strong>Autor:</strong> {{ media.author }}
+                    <span *ngIf="media.studio"> | <strong>Estúdio:</strong> {{ media.studio }}</span>
+                </p>
+                <div class="genres">
+                    <span *ngFor="let genre of media.genres" class="genre-tag">{{ genre }}</span>
+                </div>
+                <div class="meta-info">
+                    <span>{{ media.type === 'anime' ? 'Anime' : 'HQ' }}</span>
+                    <span>{{ media.episodes }}</span>
+                    <span>Nota Geral: {{ media.rating }}/10</span>
+                </div>
+            </div>
         </div>
-
-        <app-status-tracker [mediaType]="media.type"></app-status-tracker>
-
-        <h3>Sinopse</h3>
-        <p class="synopsis">{{ media.synopsis }}</p>
-
-        <h3>Onde {{ media.type === 'anime' ? 'Assistir' : 'Ler' }} no Brasil</h3>
-        <ul class="platform-list">
-          <li *ngFor="let source of media.whereToWatchRead">
-            <strong>{{ source.platform }}:</strong> {{ source.options.join(', ') }}
-          </li>
-        </ul>
-      </div>
     </div>
 
     <div class="content-body">
-      <section class="episodes-section">
-          <h2>Episódios / Capítulos</h2>
-          <p>(Funcionalidade a ser implementada)</p>
-      </section>
+        <div class="main-content">
+            <div class="synopsis-wrapper">
+                <h3>Sinopse</h3>
+                <p class="synopsis">{{ media.synopsis }}</p>
+            </div>
+            
+            <div class="platforms-wrapper">
+              <h3>Onde {{ media.type === 'anime' ? 'Assistir' : 'Ler' }} no Brasil</h3>
+              <ul class="platform-list">
+                  <li *ngFor="let source of media.whereToWatchRead">
+                      <strong>{{ source.platform }}:</strong> {{ source.options.join(', ') }}
+                  </li>
+              </ul>
+            </div>
+        </div>
 
-      <app-comment-section></app-comment-section>
+        <aside class="sidebar-content">
+            <div *ngIf="isLoggedIn$ | async; else loginRequiredSidebar" class="interaction-wrapper">
+                
+                <div class="interaction-section">
+                    <h4>Sua Avaliação</h4>
+                    <div class="rating-control">
+                        <select [ngModel]="interaction.rating" (ngModelChange)="saveRating($event)" name="userRating">
+                            <option [ngValue]="undefined" disabled>Sua nota...</option>
+                            <option *ngFor="let i of [10,9,8,7,6,5,4,3,2,1]" [value]="i">{{i}}</option>
+                        </select>
+                        <span *ngIf="interaction.rating" class="rating-display">★ {{ interaction.rating }}/10</span>
+                    </div>
+                </div>
+
+                <div class="interaction-section">
+                    <h4>Meu Progresso</h4>
+                    <div class="status-container">
+                        <ng-container *ngIf="media.type === 'anime'">
+                            <button *ngFor="let status of animeStatuses" (click)="setStatus(status)" [class.active]="interaction.status === status">{{ status }}</button>
+                        </ng-container>
+                        <ng-container *ngIf="media.type === 'hq'">
+                            <button *ngFor="let status of hqStatuses" (click)="setStatus(status)" [class.active]="interaction.status === status">{{ status }}</button>
+                        </ng-container>
+                    </div>
+
+                    <div class="progress-input-container" *ngIf="showProgressInput()">
+                        <ng-container *ngIf="media.type === 'anime'">
+                            <div class="select-group">
+                                <label for="season">Temporada</label>
+                                <select id="season" [(ngModel)]="selectedSeason"><option *ngFor="let season of seasons" [value]="season">{{ season }}</option></select>
+                            </div>
+                            <div class="select-group">
+                                <label for="episode">Episódio</label>
+                                <select id="episode" [(ngModel)]="selectedEpisode"><option *ngFor="let episode of episodes" [value]="episode">{{ episode }}</option></select>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="media.type === 'hq'">
+                            <div class="select-group">
+                                <label for="chapter">Capítulo</label>
+                                <input id="chapter" type="text" [(ngModel)]="chapterProgress" placeholder="Ex: 45">
+                            </div>
+                        </ng-container>
+                        <button class="save-btn" (click)="saveProgress()">Salvar</button>
+                    </div>
+                    <p class="progress-saved" *ngIf="interaction.progress">Progresso: {{ interaction.progress }}</p>
+                </div>
+            </div>
+            <ng-template #loginRequiredSidebar>
+                <div class="interaction-wrapper login-prompt-sidebar">
+                    <p>Faça login para avaliar e acompanhar seu progresso.</p>
+                </div>
+            </ng-template>
+        </aside>
+    </div>
+
+    <div class="comments-section-wrapper">
+      <app-comment-section [mediaId]="media.id"></app-comment-section>
     </div>
 </main>

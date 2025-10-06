@@ -1,33 +1,40 @@
 <section class="comments-container">
-    <h2>Comentários e Avaliações</h2>
+    <h2>Seu Histórico de Comentários e Avaliações</h2>
   
     <ng-container *ngIf="isLoggedIn$ | async; else showLoginPrompt">
-      <div class="comment-form">
-        <h3>Deixe sua avaliação</h3>
-        <div class="rating-input">
-          <input type="number" min="1" max="10" [(ngModel)]="newCommentRating">
-          <span>/ 10</span>
+      <form class="comment-form" (submit)="addComment($event)">
+        <h3>Adicionar um novo comentário</h3>
+        <textarea placeholder="Escreva seu comentário... (Sua avaliação e progresso salvos serão anexados automaticamente)" [(ngModel)]="newCommentText" name="commentText" required></textarea>
+        <button type="submit">Enviar Comentário</button>
+      </form>
+
+      <ng-container *ngIf="comments$ | async as comments">
+        <div class="comment-list" *ngIf="comments.length > 0">
+          <div class="comment" *ngFor="let comment of comments">
+            <div class="comment-header">
+              <span class="comment-user">{{ comment.user }}</span>
+              </div>
+            <p class="comment-text">{{ comment.text }}</p>
+            <div class="comment-footer">
+              <span class="comment-progress" *ngIf="comment.progress">
+                Referente a: {{ comment.progress }}
+              </span>
+              <span class="comment-date">{{ comment.date | date: 'dd/MM/yyyy \'às\' HH:mm' }}</span>
+            </div>
+          </div>
         </div>
-        <textarea placeholder="Escreva seu comentário..." [(ngModel)]="newCommentText"></textarea>
-        <button (click)="addComment()">Enviar Comentário</button>
-      </div>
+      
+        <div class="no-comments" *ngIf="comments.length === 0">
+            <p>Você ainda não fez comentários para esta obra.</p>
+        </div>
+      </ng-container>
+
     </ng-container>
   
     <ng-template #showLoginPrompt>
       <div class="login-prompt">
-        <p>Você precisa estar logado para comentar e avaliar.</p>
+        <p>Você precisa estar logado para ver e adicionar comentários.</p>
         <a routerLink="/login">Fazer Login</a>
       </div>
     </ng-template>
-  
-    <div class="comment-list" *ngIf="showComments">
-      <div class="comment" *ngFor="let comment of comments">
-        <div class="comment-header">
-          <span class="comment-user">{{ comment.user }}</span>
-          <span class="comment-rating">★ {{ comment.rating }}</span>
-        </div>
-        <p class="comment-text">{{ comment.text }}</p>
-        <span class="comment-date">{{ comment.date | date: 'dd/MM/yyyy' }}</span>
-      </div>
-    </div>
-  </section>
+</section>

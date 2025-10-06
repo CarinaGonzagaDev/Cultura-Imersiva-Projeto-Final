@@ -1,55 +1,53 @@
-// Atualizado: src/app/components/comment-section/comment-section.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
-
-interface Comment {
-  user: string;
-  rating: number;
-  text: string;
-  date: Date;
-}
+import { UserInteractionService, Comment } from '../../services/user-interaction.service';
 
 @Component({
   selector: 'app-comment-section',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink], 
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './comment-section.component.html',
   styleUrl: './comment-section.component.css'
 })
 export class CommentSectionComponent implements OnInit {
+  @Input() mediaId!: number;
+
   isLoggedIn$!: Observable<boolean>;
+  comments$!: Observable<Comment[]>;
   
-  comments: Comment[] = [
-    { user: 'Visitante_1', rating: 9, text: 'Obra incrível, arte fantástica!', date: new Date() }
-  ];
-
   newCommentText: string = '';
-  newCommentRating: number = 10;
-  showComments = true;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userInteractionService: UserInteractionService
+  ) {}
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.comments$ = this.userInteractionService.getComments(this.mediaId);
   }
 
-  addComment() {
-    if (!this.newCommentText || this.newCommentRating < 1 || this.newCommentRating > 10) {
+  addComment(event: Event) {
+    event.preventDefault();
+
+    if (!this.newCommentText.trim()) {
       return;
     }
-    
-    this.comments.unshift({
-      user: `Visitante_${this.comments.length + 1}`,
-      rating: this.newCommentRating,
-      text: this.newCommentText,
-      date: new Date()
-    });
 
+    const currentProgress = this.userInteractionService.getCurrentProgress(this.mediaId);
+    
+    const newComment: Comment = {
+      user: 'Você',
+      text: this.newCommentText,
+      date: new Date(),
+      progress: currentProgress
+    };
+    
+    this.userInteractionService.addComment(this.mediaId, newComment);
     this.newCommentText = '';
-    this.newCommentRating = 10;
   }
 }
