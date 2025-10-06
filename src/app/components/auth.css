@@ -85,20 +85,20 @@
 /* --- CÓDIGO CORRIGIDO PARA OS TERMOS DE USO --- */
 
 .form-group.terms {
-    display: flex;          /* 1. Torna o container flexível */
-    flex-direction: row;    /* 2. Garante que os itens fiquem lado a lado */
-    align-items: flex-start;/* 3. Alinha o checkbox ao topo do texto */
-    gap: 0.5rem;            /* 4. Cria um pequeno espaço entre a caixa e o texto */
-    margin-bottom: 2rem;    /* Espaçamento inferior */
+    display: flex;          
+    flex-direction: row;    
+    align-items: flex-start;
+    gap: 0.5rem;            
+    margin-bottom: 2rem;    
 }
 
 .form-group.terms input[type="checkbox"] {
-    width: auto;            /* Garante que o checkbox não ocupe a largura toda */
-    margin-top: 5px;        /* Ajuste para alinhar verticalmente com a primeira linha de texto */
+    width: auto;            
+    margin-top: 5px;        
 }
 
 .form-group.terms label {
-    display: inline;        /* Permite que o texto fique ao lado do checkbox */
+    display: inline;        
     font-weight: 400;
     font-size: 0.9rem;
     line-height: 1.5;
