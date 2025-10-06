@@ -51,7 +51,50 @@ export class MediaService {
         { platform: 'Netflix', options: ['Assinatura'] }
       ]
     },
-    // Adicione os outros animes aqui seguindo a mesma estrutura
+    {
+      id: 3, type: 'anime', image: 'Chainsaw Man.jpg', title: 'Chainsaw Man',
+      season: 'S1', episodes: 'E12', rating: 9.8,
+      genres: ['Ação', 'Fantasia Sombria', 'Horror', 'Shonen'], status: 'Finalizado',
+      releaseYear: 2022, author: 'Tatsuki Fujimoto', studio: 'MAPPA', ageRating: '18+',
+      audio: ['Legendado'], alternativeNames: [],
+      synopsis: 'Denji é um jovem que trabalha como caçador de demônios para a Yakuza. Após ser traído e morto, ele renasce como Chainsaw Man, um híbrido de demônio e humano com motosserras no lugar de braços e cabeça.',
+      whereToWatchRead: [
+        { platform: 'Crunchyroll', options: ['Premium'] }
+      ]
+    },
+    {
+      id: 4, type: 'anime', image: 'Dandadan.jpg', title: 'Dandadan',
+      season: 'S1', episodes: 'E12', rating: 9.8,
+      genres: ['Comédia', 'Ficção Científica', 'Ação', 'Sobrenatural'], status: 'Em Lançamento',
+      releaseYear: 2024, author: 'Yukinobu Tatsu', studio: 'Science SARU', ageRating: '14+',
+      audio: ['Legendado'], alternativeNames: [],
+      synopsis: 'Momo Ayase, uma colegial que acredita em fantasmas, e seu colega de classe, Okarun, que acredita em alienígenas, fazem uma aposta para ver quem está certo. O resultado é uma aventura caótica e hilária envolvendo o paranormal.',
+      whereToWatchRead: [
+        { platform: 'Netflix', options: ['Assinatura'] }
+      ]
+    },
+    {
+      id: 5, type: 'anime', image: 'Attack On Titan.jpg', title: 'Attack on Titan',
+      season: 'S4', episodes: 'E28', rating: 9.3,
+      genres: ['Ação', 'Suspense', 'Drama', 'Fantasia Sombria'], status: 'Finalizado',
+      releaseYear: 2013, author: 'Hajime Isayama', studio: 'Wit Studio / MAPPA', ageRating: '18+',
+      audio: ['Legendado', 'Dublado'], alternativeNames: ['Shingeki no Kyojin'],
+      synopsis: 'Em um mundo onde a humanidade vive cercada por muralhas para se proteger de gigantes devoradores de humanos, um jovem chamado Eren Yeager jura exterminar todos os titãs após sua cidade ser destruída.',
+      whereToWatchRead: [
+        { platform: 'Crunchyroll', options: ['Premium'] }
+      ]
+    },
+    {
+      id: 6, type: 'anime', image: 'SAKAMOTO DAYS.jpg', title: 'Sakamoto Days',
+      season: 'S1', episodes: 'E12', rating: 9.1,
+      genres: ['Ação', 'Comédia', 'Shonen', 'Slice of Life'], status: 'Em Lançamento',
+      releaseYear: 2025, author: 'Yuto Suzuki', studio: 'TMS Entertainment', ageRating: '14+',
+      audio: ['Legendado'], alternativeNames: [],
+      synopsis: 'Taro Sakamoto era o maior assassino de todos os tempos, temido por vilões e respeitado por seus pares. Mas um dia ele se apaixonou, casou, teve uma filha e se tornou um pacato dono de uma loja de conveniência.',
+      whereToWatchRead: [
+        { platform: 'Netflix', options: ['Assinatura'] }
+      ]
+    }
   ];
 
   private mangas: Media[] = [
@@ -66,7 +109,50 @@ export class MediaService {
         { platform: 'Manga Plus', options: ['Grátis (últimos capítulos)'] }
       ]
     },
-    // Adicione os outros mangás aqui seguindo a mesma estrutura
+    {
+      id: 12, type: 'hq', image: 'Look Back Mangá.jpg', title: 'Look Back',
+      season: 'Finalizado', episodes: '1 Cap.', rating: 9.5,
+      genres: ['Drama', 'Slice of Life'], country: 'Japão (Mangá)',
+      releaseYear: 2021, author: 'Tatsuki Fujimoto', ageRating: '14+',
+      audio: [], alternativeNames: [],
+      synopsis: 'Fujino, uma estudante talentosa e confiante em seu talento para desenhar mangás, e Kyomoto, uma colega de classe reclusa que se recusa a sair de casa. Uma história sobre amizade, arte e as complexidades da vida.',
+      whereToWatchRead: [
+        { platform: 'Manga Plus', options: ['Grátis'] }
+      ]
+    },
+    {
+      id: 13, type: 'hq', image: 'Otoyomegatari Mangá.jpg', title: 'A Bride\'s Story',
+      season: 'Em Andamento', episodes: '112 Caps.', rating: 9.7,
+      genres: ['Histórico', 'Romance', 'Slice of Life', 'Seinen'], country: 'Japão (Mangá)',
+      releaseYear: 2008, author: 'Kaoru Mori', ageRating: '14+',
+      audio: [], alternativeNames: ["Otoyomegatari"],
+      synopsis: 'A história se passa na Ásia Central do século XIX e segue a vida de Amira, uma noiva de 20 anos que se casa com Karluk, um menino de 12 anos de uma vila vizinha. Uma obra aclamada pela sua arte detalhada e representação cultural.',
+      whereToWatchRead: [
+        { platform: 'Não disponível oficialmente no Brasil', options: [] }
+      ]
+    },
+    {
+      id: 14, type: 'hq', image: 'Battle Angel Alita Mangá.jpg', title: 'Battle Angel Alita',
+      season: 'Finalizado', episodes: '51 Caps.', rating: 9.3,
+      genres: ['Ação', 'Ficção Científica', 'Psicológico', 'Seinen'], country: 'Japão (Mangá)',
+      releaseYear: 1990, author: 'Yukito Kishiro', ageRating: '18+',
+      audio: [], alternativeNames: ['Gunnm'],
+      synopsis: 'Em uma cidade-lixão, o caçador de recompensas Daisuke Ido encontra os restos de uma ciborgue feminina. Ele a reconstrói e a nomeia Alita, mas ela não tem memória de seu passado.',
+      whereToWatchRead: [
+        { platform: 'JBC', options: ['Impresso'] }
+      ]
+    },
+    {
+      id: 15, type: 'hq', image: 'Dragon Ball Mangá.jpg', title: 'Dragon Ball Super',
+      season: 'Em Andamento', episodes: '104 Caps.', rating: 8.5,
+      genres: ['Ação', 'Aventura', 'Shonen'], country: 'Japão (Mangá)',
+      releaseYear: 2015, author: 'Akira Toriyama / Toyotaro', ageRating: 'Livre',
+      audio: [], alternativeNames: [],
+      synopsis: 'Continuando as aventuras de Goku e seus amigos após a derrota de Majin Buu, a série apresenta novos deuses, universos e inimigos poderosos a serem enfrentados.',
+      whereToWatchRead: [
+        { platform: 'Manga Plus', options: ['Grátis (últimos capítulos)'] }
+      ]
+    },
   ];
 
   constructor() { }

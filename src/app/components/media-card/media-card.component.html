@@ -1,6 +1,6 @@
 <a [routerLink]="['/', item.type, item.id]" class="work-card">
   <div class="card-img">
-    <img [src]="item.image" [alt]="item.title">
+    <img [src]="'/' + item.image" [alt]="item.title">
   </div>
   <div class="card-info">
     <h3>{{ item.title }}</h3>

@@ -19,8 +19,7 @@ export class FeaturedCarouselComponent {
   currentIndex = 0;
 
   next() {
-    // CORREÇÃO: Lógica ajustada para permitir avançar até o final
-    const maxIndex = Math.max(0, this.items.length - 4); // Exibe 4 itens por vez
+    const maxIndex = this.items.length > 4 ? this.items.length - 4 : 0;
     if (this.currentIndex < maxIndex) {
       this.currentIndex++;
     }
@@ -33,7 +32,7 @@ export class FeaturedCarouselComponent {
   }
 
   getCarouselTransform() {
-    // A lógica de transformação permanece a mesma
+    // A cada avanço, movemos o carrossel 25% para a esquerda (largura de 1 item + margem)
     return `translateX(-${this.currentIndex * 25}%)`;
   }
 }
