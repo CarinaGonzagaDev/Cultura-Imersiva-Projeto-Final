@@ -38,6 +38,9 @@
       <a routerLink="/login" (click)="closeSidebar()">Login</a>
       <a routerLink="/cadastro" (click)="closeSidebar()">Cadastro</a>
     </ng-container>
+    <ng-container *ngIf="isLoggedIn$ | async">
+      <a (click)="logout(); closeSidebar()">Sair</a>
+    </ng-container>
   </div>
   <div class="overlay" [class.open]="isSidebarOpen" (click)="closeSidebar()"></div>
 </header>
