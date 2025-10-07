@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { HomeComponent } from "./components/home/home.component";
+import { HomeComponent } from "./pages/home/home.component";
 import { HqsComponent } from "./pages/hqs/hqs.component";
 import { AnimeComponent } from "./pages/anime/anime.component";
 import { LoginComponent } from "./pages/login/login.component";
