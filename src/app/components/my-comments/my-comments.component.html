@@ -1,0 +1,22 @@
+<div class="comments-section">
+    <h2>Meus Comentários</h2>
+    <ng-container *ngIf="comments$ | async as comments">
+      <div *ngIf="comments.length > 0; else noComments" class="comments-list">
+        <div *ngFor="let comment of comments" class="comment-item">
+          <div class="comment-header">
+            <h3><a routerLink="/{{ comment.media.type }}/{{ comment.media.id }}">{{ comment.media.title }}</a></h3>
+            <span class="comment-date">{{ comment.date | date: 'dd/MM/yyyy \'às\' HH:mm' }}</span>
+          </div>
+          <div class="comment-body">
+            <p>{{ comment.text }}</p>
+          </div>
+          <div class="comment-footer">
+            <span class="comment-rating" *ngIf="comment.rating">Sua Avaliação: ★ {{ comment.rating }}</span>
+          </div>
+        </div>
+      </div>
+      <ng-template #noComments>
+        <p class="no-comments-message">Você ainda não fez nenhum comentário.</p>
+      </ng-template>
+    </ng-container>
+  </div>

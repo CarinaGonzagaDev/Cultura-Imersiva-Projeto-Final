@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Media, MediaService } from './media.service';
 
 export interface Comment {
   user: string;
@@ -8,6 +9,12 @@ export interface Comment {
   date: Date;
   progress?: string;
 }
+
+export interface CommentWithMedia extends Comment {
+  media: Media;
+  rating?: number;
+}
+
 
 export interface UserMediaInteraction {
   status?: string;
@@ -27,7 +34,7 @@ export class UserInteractionService {
   private interactions = new BehaviorSubject<AllInteractions>({});
   public interactions$ = this.interactions.asObservable();
 
-  constructor() { }
+  constructor(private mediaService: MediaService) { }
 
   private getInteraction(mediaId: number | string): UserMediaInteraction {
     const id = mediaId.toString();
@@ -63,6 +70,32 @@ export class UserInteractionService {
   getComments(mediaId: number | string): Observable<Comment[]> {
     return this.getInteractionData(mediaId).pipe(
       map(interaction => interaction?.comments || [])
+    );
+  }
+
+  getAllComments(): Observable<CommentWithMedia[]> {
+    return combineLatest([
+      this.interactions$,
+      this.mediaService.getAllMedia()
+    ]).pipe(
+      map(([interactions, allMedia]) => {
+        const allComments: CommentWithMedia[] = [];
+        for (const mediaId in interactions) {
+          if (interactions[mediaId].comments) {
+            const media = allMedia.find(m => m.id.toString() === mediaId);
+            if (media) {
+              for (const comment of interactions[mediaId].comments!) {
+                allComments.push({
+                  ...comment,
+                  media: media,
+                  rating: interactions[mediaId].rating
+                });
+              }
+            }
+          }
+        }
+        return allComments.sort((a, b) => b.date.getTime() - a.date.getTime());
+      })
     );
   }
   

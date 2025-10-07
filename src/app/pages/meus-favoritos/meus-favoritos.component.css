@@ -1,16 +1,52 @@
+/* Adicionado para forçar o alinhamento do componente no topo */
+:host {
+  align-self: flex-start;
+  width: 100%;
+}
+
 .page-container {
+  display: flex;
   max-width: 1400px;
-  /* margin-top foi removido e o espaçamento agora é controlado pelo padding */
-  margin: 0 auto 2rem; 
-  padding: 2rem;
-  min-height: 60vh;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+
+.main-content-area {
+  flex-grow: 1;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 h1 {
   font-size: 2.5rem;
-  margin-bottom: 2rem;
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 1rem;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.toggle-comments-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.toggle-comments-btn:hover {
+  background-color: var(--primary-color);
+  color: #121212;
 }
 
 .works-grid {
@@ -57,15 +93,23 @@ h1 {
 /* --- RESPONSIVIDADE PARA TELAS MENORES --- */
 @media (max-width: 768px) {
   .page-container {
-    padding: 2rem 1rem;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
   }
 }
 
 /* --- AJUSTE FINO PARA TELAS MUITO PEQUENAS (MOBILES) --- */
 @media (max-width: 480px) {
   .page-container {
-      margin-bottom: 1rem;
-      padding: 1.5rem 0.75rem;
+      margin-top: 1rem;
+      padding: 0 0.5rem;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    margin-bottom: 1.5rem;
   }
 
   .works-grid {
@@ -76,8 +120,9 @@ h1 {
   h1 {
     font-size: 1.8rem;
     padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
+  
   .no-items-prompt p, .login-required p {
     font-size: 0.9rem;
   }

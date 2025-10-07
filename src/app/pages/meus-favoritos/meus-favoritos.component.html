@@ -1,17 +1,57 @@
 <div class="page-container">
   <ng-container *ngIf="isLoggedIn$ | async; else showLoginPrompt">
-    <h1>Minha Lista</h1>
-    <ng-container *ngIf="interactedMedia$ | async as mediaList">
-      <div *ngIf="mediaList.length > 0; else noItems" class="works-grid">
-        <app-media-card *ngFor="let item of mediaList" [item]="item"></app-media-card>
+    <aside class="filters">
+      <h2>Filtros</h2>
+      <div class="filter-group">
+        <h3>Tipo</h3>
+        <label><input type="radio" name="mediaType" value="all" [(ngModel)]="mediaType" (change)="applyFilters()"> Todos</label>
+        <label><input type="radio" name="mediaType" value="anime" [(ngModel)]="mediaType" (change)="applyFilters()"> Animes</label>
+        <label><input type="radio" name="mediaType" value="hq" [(ngModel)]="mediaType" (change)="applyFilters()"> HQs</label>
       </div>
-      <ng-template #noItems>
-        <div class="no-items-prompt">
-          <p>Você ainda não interagiu com nenhuma obra.</p>
-          <p>Adicione status, avaliações ou comentários para que elas apareçam aqui.</p>
+
+      <div class="filter-group">
+        <h3>Gênero</h3>
+        <label *ngFor="let genre of allGenres">
+          <input type="checkbox" [(ngModel)]="selectedGenres[genre]" (change)="applyFilters()">
+          {{ genre }}
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <h3>Ordenar Por</h3>
+        <label>
+          <input type="radio" name="sort" value="popularity" [(ngModel)]="sortBy" (change)="applyFilters()">
+          Popularidade
+        </label>
+        <label>
+          <input type="radio" name="sort" value="release" [(ngModel)]="sortBy" (change)="applyFilters()">
+          Lançamento
+        </label>
+      </div>
+    </aside>
+
+    <main class="main-content-area">
+      <div class="header-container">
+        <h1>Minha Lista</h1>
+        <button class="toggle-comments-btn" (click)="toggleComments()">
+          {{ showComments ? 'Ocultar Comentários' : 'Exibir Comentários' }}
+        </button>
+      </div>
+
+      <ng-container *ngIf="filteredMedia$ | async as mediaList">
+        <div *ngIf="mediaList.length > 0; else noItems" class="works-grid">
+          <app-media-card *ngFor="let item of mediaList" [item]="item"></app-media-card>
         </div>
-      </ng-template>
-    </ng-container>
+        <ng-template #noItems>
+          <div class="no-items-prompt">
+            <p>Nenhum item corresponde aos filtros selecionados.</p>
+          </div>
+        </ng-template>
+      </ng-container>
+
+      <app-my-comments *ngIf="showComments"></app-my-comments>
+    </main>
+
   </ng-container>
 
   <ng-template #showLoginPrompt>
