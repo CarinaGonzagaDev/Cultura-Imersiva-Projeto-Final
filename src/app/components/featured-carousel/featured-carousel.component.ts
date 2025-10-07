@@ -1,13 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Media } from '../../services/media.service';
-// CORREÇÃO: Importar o MediaCardComponent para que o HTML possa usá-lo
 import { MediaCardComponent } from '../media-card/media-card.component';
 
 @Component({
   selector: 'app-featured-carousel',
   standalone: true,
-  // CORREÇÃO: Adicionar MediaCardComponent aos imports
   imports: [CommonModule, MediaCardComponent],
   templateUrl: './featured-carousel.component.html',
   styleUrl: './featured-carousel.component.css'
@@ -22,17 +20,21 @@ export class FeaturedCarouselComponent {
     const maxIndex = this.items.length > 4 ? this.items.length - 4 : 0;
     if (this.currentIndex < maxIndex) {
       this.currentIndex++;
+    } else {
+      this.currentIndex = 0;
     }
   }
 
   prev() {
+    const maxIndex = this.items.length > 4 ? this.items.length - 4 : 0;
     if (this.currentIndex > 0) {
       this.currentIndex--;
+    } else {
+      this.currentIndex = maxIndex;
     }
   }
 
   getCarouselTransform() {
-    // A cada avanço, movemos o carrossel 25% para a esquerda (largura de 1 item + margem)
     return `translateX(-${this.currentIndex * 25}%)`;
   }
 }
