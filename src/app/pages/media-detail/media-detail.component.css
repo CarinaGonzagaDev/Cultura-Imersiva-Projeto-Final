@@ -161,16 +161,33 @@
   }
 }
 
+/* --- AJUSTES PARA TELAS PEQUENAS --- */
 @media (max-width: 480px) {
+  .detail-header {
+    height: auto; /* Altura automática para se ajustar ao conteúdo */
+    padding: 1rem;
+  }
+
+  .header-content {
+    /* O pôster ficará acima do texto */
+    gap: 1rem;
+  }
+
   .info h1 {
     font-size: 1.6rem;
   }
 
   .detail-container {
-    padding: 0 1rem 1rem 1rem; 
+    padding: 0 1rem 1rem 1rem;
   }
 
   .poster {
     width: 150px;
+    margin-top: 0; /* CORREÇÃO PRINCIPAL: Remove a margem que puxa para cima */
+    transform: none; /* Remove qualquer transformação de posição */
+  }
+
+  .content-body {
+    margin-top: 2rem; /* Margem normal para o corpo da página */
   }
 }
