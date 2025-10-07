@@ -2,10 +2,12 @@
 
 .auth-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
+    justify-content: center; /* Centraliza o formulário horizontalmente */
+    align-items: center;     /* Centraliza o formulário verticalmente */
+    width: 100%;
+    min-height: 70vh;        /* Garante que o container tenha altura suficiente para centralizar */
     padding: 2rem;
+    box-sizing: border-box;
 }
 
 .auth-form {
@@ -82,7 +84,7 @@
     text-decoration: underline;
 }
 
-/* --- CÓDIGO CORRIGIDO PARA OS TERMOS DE USO --- */
+/* --- TERMOS DE USO --- */
 
 .form-group.terms {
     display: flex;          
@@ -118,4 +120,42 @@
     background-color: #333;
     color: #666;
     cursor: not-allowed;
+}
+
+/* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
+
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 1rem;
+        align-items: flex-start;
+        padding-top: 3rem;
+        min-height: 0; /* Remove a altura mínima em telas pequenas */
+    }
+
+    .auth-form {
+        padding: 1.5rem;
+        box-shadow: none;
+        border: 1px solid #2a2a2a;
+    }
+
+    .auth-form h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-group.terms {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group.terms label {
+        font-size: 0.8rem;
+    }
+
+    .auth-link {
+        font-size: 0.9rem;
+    }
 }

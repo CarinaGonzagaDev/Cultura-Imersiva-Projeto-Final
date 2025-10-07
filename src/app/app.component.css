@@ -4,11 +4,15 @@
   min-height: 100vh;
 }
 
-/* Garante que o conteúdo principal (router-outlet) ocupe o espaço restante */
-:host ::ng-deep router-outlet + * {
-  flex-grow: 1;
+main {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
 }
 
-main {
+
+main > :first-child {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
