@@ -1,7 +1,8 @@
 .page-container {
   max-width: 1400px;
-  margin: 2rem auto;
-  padding: 0 2rem;
+  /* margin-top foi removido e o espaçamento agora é controlado pelo padding */
+  margin: 0 auto 2rem; 
+  padding: 2rem;
   min-height: 60vh;
 }
 
@@ -51,4 +52,33 @@ h1 {
 
 .login-btn:hover {
   background-color: #d1b1fc;
+}
+
+/* --- RESPONSIVIDADE PARA TELAS MENORES --- */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 2rem 1rem;
+  }
+}
+
+/* --- AJUSTE FINO PARA TELAS MUITO PEQUENAS (MOBILES) --- */
+@media (max-width: 480px) {
+  .page-container {
+      margin-bottom: 1rem;
+      padding: 1.5rem 0.75rem;
+  }
+
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem; 
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .no-items-prompt p, .login-required p {
+    font-size: 0.9rem;
+  }
 }

@@ -1,4 +1,4 @@
-<main class="page-container">
+<div class="page-container">
   <ng-container *ngIf="isLoggedIn$ | async; else showLoginPrompt">
     <h1>Minha Lista</h1>
     <ng-container *ngIf="interactedMedia$ | async as mediaList">
@@ -21,4 +21,4 @@
       <a routerLink="/login" class="login-btn">Fazer Login</a>
     </div>
   </ng-template>
-</main>
+</div>
