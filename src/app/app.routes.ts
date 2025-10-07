@@ -7,6 +7,7 @@ import { CadastroComponent } from "./pages/cadastro/cadastro.component";
 import { TermosDeUsoComponent } from "./pages/termos-de-uso/termos-de-uso.component";
 import { PoliticaDePrivacidadeComponent } from "./pages/politica-de-privacidade/politica-de-privacidade.component";
 import { MediaDetailComponent } from "./pages/media-detail/media-detail.component"; // Importe o novo componente
+import { MeusFavoritosComponent } from "./pages/meus-favoritos/meus-favoritos.component";
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -19,4 +20,5 @@ export const routes: Routes = [
     { path: 'politica-de-privacidade', component: PoliticaDePrivacidadeComponent },
     { path: 'anime/:id', component: MediaDetailComponent },
     { path: 'hq/:id', component: MediaDetailComponent },
+    { path: 'meus-favoritos', component: MeusFavoritosComponent }
 ];

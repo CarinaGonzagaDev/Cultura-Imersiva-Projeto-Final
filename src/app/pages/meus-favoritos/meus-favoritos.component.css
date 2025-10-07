@@ -1,54 +1,54 @@
 .page-container {
-    max-width: 1400px;
-    margin: 2rem auto;
-    padding: 0 2rem;
-    min-height: 60vh;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 1rem;
-  }
-  
-  .works-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .no-items-prompt, .login-required {
-    text-align: center;
-    padding: 4rem 2rem;
-    background-color: var(--surface-color);
-    border-radius: 8px;
-    color: var(--text-secondary);
-  }
-  
-  .no-items-prompt p, .login-required p {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-  }
-  
-  .login-required h2 {
-      margin-bottom: 1rem;
-  }
-  
-  .login-btn {
-    background-color: var(--primary-color);
-    color: #121212;
-    padding: 0.8rem 1.5rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: background-color 0.3s ease;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    margin-top: 1.5rem;
-  }
-  
-  .login-btn:hover {
-    background-color: #d1b1fc;
-  }
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  min-height: 60vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 1rem;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.no-items-prompt, .login-required {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  color: var(--text-secondary);
+}
+
+.no-items-prompt p, .login-required p {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.login-required h2 {
+    margin-bottom: 1rem;
+}
+
+.login-btn {
+  background-color: var(--primary-color);
+  color: #121212;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+
+.login-btn:hover {
+  background-color: #d1b1fc;
+}

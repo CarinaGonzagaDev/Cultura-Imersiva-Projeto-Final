@@ -1,24 +1,24 @@
 <main class="page-container">
-    <ng-container *ngIf="isLoggedIn$ | async; else showLoginPrompt">
-      <h1>Minha Lista</h1>
-      <ng-container *ngIf="interactedMedia$ | async as mediaList">
-        <div *ngIf="mediaList.length > 0; else noItems" class="works-grid">
-          <app-media-card *ngFor="let item of mediaList" [item]="item"></app-media-card>
-        </div>
-        <ng-template #noItems>
-          <div class="no-items-prompt">
-            <p>Você ainda não interagiu com nenhuma obra.</p>
-            <p>Adicione status, avaliações ou comentários para que elas apareçam aqui.</p>
-          </div>
-        </ng-template>
-      </ng-container>
-    </ng-container>
-  
-    <ng-template #showLoginPrompt>
-      <div class="login-required">
-        <h2>Página restrita</h2>
-        <p>Você precisa estar logado para ver sua lista.</p>
-        <a routerLink="/login" class="login-btn">Fazer Login</a>
+  <ng-container *ngIf="isLoggedIn$ | async; else showLoginPrompt">
+    <h1>Minha Lista</h1>
+    <ng-container *ngIf="interactedMedia$ | async as mediaList">
+      <div *ngIf="mediaList.length > 0; else noItems" class="works-grid">
+        <app-media-card *ngFor="let item of mediaList" [item]="item"></app-media-card>
       </div>
-    </ng-template>
-  </main>
+      <ng-template #noItems>
+        <div class="no-items-prompt">
+          <p>Você ainda não interagiu com nenhuma obra.</p>
+          <p>Adicione status, avaliações ou comentários para que elas apareçam aqui.</p>
+        </div>
+      </ng-template>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #showLoginPrompt>
+    <div class="login-required">
+      <h2>Página restrita</h2>
+      <p>Você precisa estar logado para ver sua lista.</p>
+      <a routerLink="/login" class="login-btn">Fazer Login</a>
+    </div>
+  </ng-template>
+</main>
