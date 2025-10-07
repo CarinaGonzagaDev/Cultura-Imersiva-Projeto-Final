@@ -1,6 +1,12 @@
 <header>
   <div class="header-container">
     <a routerLink="/home" class="logo">Cultura Imersiva</a>
+
+    <button class="menu-toggle" (click)="toggleSidebar()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
     
     <nav class="main-nav">
       <ul>
@@ -23,4 +29,15 @@
       </ng-template>
     </div>
   </div>
+
+  <div class="sidebar" [class.open]="isSidebarOpen">
+    <a routerLink="/animes" (click)="closeSidebar()">Animes</a>
+    <a routerLink="/hqs" (click)="closeSidebar()">HQs</a>
+    <a *ngIf="isLoggedIn$ | async" routerLink="/meus-favoritos" (click)="closeSidebar()">Meus Favoritos</a>
+    <ng-container *ngIf="!(isLoggedIn$ | async)">
+      <a routerLink="/login" (click)="closeSidebar()">Login</a>
+      <a routerLink="/cadastro" (click)="closeSidebar()">Cadastro</a>
+    </ng-container>
+  </div>
+  <div class="overlay" [class.open]="isSidebarOpen" (click)="closeSidebar()"></div>
 </header>

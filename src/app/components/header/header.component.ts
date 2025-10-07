@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent implements OnInit {
   isLoggedIn$!: Observable<boolean>;
   isDropdownOpen = false;
+  isSidebarOpen = false;
 
   constructor(private authService: AuthService) { }
 
@@ -28,5 +29,13 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.authService.logout();
+  }
+
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  closeSidebar(): void {
+    this.isSidebarOpen = false;
   }
 }
