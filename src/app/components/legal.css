@@ -15,3 +15,19 @@
     margin-bottom: 1rem;
     color: var(--text-secondary);
 }
+
+/* --- ADIÇÃO PARA RESPONSIVIDADE --- */
+@media (max-width: 480px) {
+    .legal-container {
+        margin: 1rem auto;
+        padding: 1.5rem;
+    }
+
+    .legal-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .legal-container p, .legal-container li {
+        font-size: 0.6rem; 
+    }
+}
