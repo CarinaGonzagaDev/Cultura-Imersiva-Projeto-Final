@@ -52,7 +52,7 @@
   gap: 1.5rem;
 }
 
-/* --- ADIÇÃO PARA RESPONSIVIDADE EM TELAS MENORES --- */
+/* --- RESPONSIVIDADE PARA TELAS MENORES --- */
 @media (max-width: 768px) {
   .page-container {
     flex-direction: column;
@@ -64,10 +64,42 @@
   }
 }
 
-/* Ajuste para telas ainda menores */
+/* --- AJUSTE FINO PARA TELAS MUITO PEQUENAS (MOBILES) --- */
 @media (max-width: 480px) {
+  .page-container {
+      /* Reduz o espaçamento geral da página */
+      margin-top: 1rem;
+      padding: 0 0.5rem;
+  }
+
   .works-grid {
-    /* Faz com que os cards fiquem um pouco maiores em telas muito pequenas */
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    /* Define um tamanho mínimo menor para os cards, permitindo 2 colunas */
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1rem; /* Reduz o espaçamento entre os cards */
+  }
+
+  /* --- DEIXANDO O FILTRO MAIS COMPACTO --- */
+  .filters {
+      padding: 1rem;
+  }
+
+  .filters h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+  }
+
+  .filter-group {
+      margin-bottom: 1.5rem;
+  }
+
+  .filter-group h3 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+  }
+
+  .filter-group label {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
   }
 }
