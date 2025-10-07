@@ -1,3 +1,4 @@
+/* carinagonzagadev/cultura-imersiva-projeto-final/Cultura-Imersiva-Projeto-Final-cb9a6c327e89197ceef83793f15cdea0c7b9b0b8/src/app/components/hero/hero.component.css */
 .hero {
   position: relative;
   height: 60vh; /* Esta linha que dá o espaço visível para a seção */
@@ -32,5 +33,15 @@
   }
   .hero p {
     font-size: 1rem;
+  }
+}
+
+/* Adicione este novo media query para telas menores */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem; /* Tamanho da fonte reduzido para o título */
+  }
+  .hero p {
+    font-size: 0.9rem; /* Tamanho da fonte reduzido para o parágrafo */
   }
 }
