@@ -1,3 +1,5 @@
+/* carinagonzagadev/cultura-imersiva-projeto-final/Cultura-Imersiva-Projeto-Final-cb9a6c327e89197ceef83793f15cdea0c7b9b0b8/src/app/components/featured-carousel/featured-carousel.component.css */
+
 /* CSS final e corrigido para o Carrossel */
 .featured-works {
   padding: 4rem 0;
@@ -96,3 +98,22 @@
 @media (max-width: 992px) { .carousel-item { flex-basis: 30%; } }
 @media (max-width: 768px) { .carousel-item { flex-basis: 45%; } }
 @media (max-width: 576px) { .carousel-item { flex-basis: 80%; margin: 0 10%; } }
+
+/* Adicione este novo media query para o Lumia e telas pequenas */
+@media (max-width: 480px) {
+  .carousel-item {
+    flex-basis: 70%; /* Ocupa 70% da tela */
+    margin: 0 15%;  /* Centraliza o item com 15% de margem em cada lado */
+  }
+
+  .featured-works h2 {
+    font-size: 2rem; /* Reduz o tamanho do título da seção */
+  }
+
+  .carousel-container {
+    padding: 0 25px; /* Reduz o espaçamento lateral */
+  }
+
+  .carousel-btn.prev { left: -5px; } /* Aproxima os botões */
+  .carousel-btn.next { right: -5px; }
+}
