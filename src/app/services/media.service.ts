@@ -55,7 +55,7 @@ export class MediaService {
     {
       id: 3, type: 'anime', image: 'Chainsaw Man.jpg', title: 'Chainsaw Man',
       season: 'S1', episodes: 'E12', rating: 9.8,
-      genres: ['Ação', 'Fantasia Sombria', 'Horror', 'Shonen'], status: 'Finalizado',
+      genres: ['Ação', 'Fantasia Sombria', 'Horror', 'Shonen'], status: 'Em Lançamento',
       releaseYear: 2022, author: 'Tatsuki Fujimoto', studio: 'MAPPA', ageRating: '18+',
       audio: ['Legendado'], alternativeNames: [],
       synopsis: 'Denji é um jovem que trabalha como caçador de demônios para a Yakuza. Após ser traído e morto, ele renasce como Chainsaw Man, um híbrido de demônio e humano com motosserras no lugar de braços e cabeça.',
