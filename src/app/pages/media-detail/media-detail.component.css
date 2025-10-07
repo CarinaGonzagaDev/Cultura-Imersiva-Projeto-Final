@@ -140,7 +140,6 @@
   grid-column: 1 / -1;
 }
 
-/* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
@@ -158,6 +157,20 @@
     grid-template-columns: 1fr;
   }
   .sidebar-content {
-    order: -1; /* Move sidebar to the top on mobile */
+    order: -1; 
+  }
+}
+
+@media (max-width: 480px) {
+  .info h1 {
+    font-size: 1.6rem;
+  }
+
+  .detail-container {
+    padding: 0 1rem 1rem 1rem; 
+  }
+
+  .poster {
+    width: 150px;
   }
 }

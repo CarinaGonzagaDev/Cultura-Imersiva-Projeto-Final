@@ -167,6 +167,7 @@ header {
   display: block;
 }
 
+
 @media (max-width: 768px) {
   .main-nav, .user-actions {
     display: none;
@@ -176,7 +177,6 @@ header {
     display: flex;
   }
 }
-
 @media (max-width: 320px) {
   .logo {
     font-size: 1.2rem;

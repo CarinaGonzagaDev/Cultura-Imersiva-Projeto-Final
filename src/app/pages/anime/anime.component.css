@@ -1,54 +1,73 @@
 /* CSS adaptado diretamente do seu filters.css */
 .page-container {
-    display: flex;
-    max-width: 1400px;
-    margin: 2rem auto;
-    padding: 0 2rem;
-    gap: 2rem;
+  display: flex;
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+
+.filters {
+  width: 280px;
+  flex-shrink: 0;
+  background-color: var(--surface-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  align-self: flex-start;
+  height: fit-content;
+}
+
+.filters h2 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-group {
+  margin-bottom: 2rem;
+}
+
+.filter-group h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.filter-group input {
+  margin-right: 0.5rem;
+}
+
+.works-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --- ADIÇÃO PARA RESPONSIVIDADE EM TELAS MENORES --- */
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column;
+    padding: 0 1rem;
   }
-  
+
   .filters {
-    width: 280px;
-    flex-shrink: 0;
-    background-color: var(--surface-color);
-    padding: 1.5rem;
-    border-radius: 8px;
-    align-self: flex-start;
-    height: fit-content;
+    width: 100%;
   }
-  
-  .filters h2 {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    font-size: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .filter-group {
-    margin-bottom: 2rem;
-  }
-  
-  .filter-group h3 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-  }
-  
-  .filter-group label {
-    display: block;
-    margin-bottom: 0.75rem;
-    cursor: pointer;
-    font-size: 0.9rem;
-  }
-  
-  .filter-group input {
-    margin-right: 0.5rem;
-  }
-  
-  /* A CLASSE MAIS IMPORTANTE PARA CORRIGIR AS IMAGENS GRANDES */
+}
+
+/* Ajuste para telas ainda menores */
+@media (max-width: 480px) {
   .works-grid {
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.5rem;
+    /* Faz com que os cards fiquem um pouco maiores em telas muito pequenas */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
+}
