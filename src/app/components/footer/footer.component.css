@@ -1,3 +1,5 @@
+/* carinagonzagadev/cultura-imersiva-projeto-final/Cultura-Imersiva-Projeto-Final-cb9a6c327e89197ceef83793f15cdea0c7b9b0b8/src/app/components/footer/footer.component.css */
+
 /* CSS final e corrigido para o Footer */
 footer {
   background-color: #101010;
@@ -10,4 +12,15 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+/* Adicione este novo media query para o Lumia e telas pequenas */
+@media (max-width: 480px) {
+  footer {
+    padding: 1.5rem 0; /* Reduz o espaçamento vertical */
+  }
+
+  .footer-container p {
+    font-size: 0.8rem; /* Diminui o tamanho da fonte */
+  }
 }
