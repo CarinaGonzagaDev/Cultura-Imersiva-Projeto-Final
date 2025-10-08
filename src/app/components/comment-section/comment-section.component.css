@@ -68,11 +68,6 @@
   color: var(--text-secondary);
 }
 
-.comment-list {
-  /* Remove margin-top from here to have a single source of spacing */
-}
-
-/* CORREÇÃO: Adiciona margem para separar do formulário */
 .no-comments {
     margin-top: 2rem;
     text-align: center;
