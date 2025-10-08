@@ -9,24 +9,44 @@
     </form>
 
     <ng-container *ngIf="comments$ | async as comments">
-      <div class="comment-list" *ngIf="comments.length > 0">
+      <div class="comment-list" *ngIf="comments.length > 0; else noCommentsTemplate">
         <div class="comment" *ngFor="let comment of comments">
-          <div class="comment-header">
-            <span class="comment-user">{{ comment.user }}</span>
+          
+          <ng-container *ngIf="editingCommentId !== comment.id; else editTemplate">
+            <div class="comment-header">
+              <span class="comment-user">{{ comment.user }}</span>
+              <div class="comment-actions">
+                <button (click)="enableEditing(comment)" class="action-btn edit-btn">Editar</button>
+                <button (click)="deleteComment(comment.id)" class="action-btn delete-btn">Excluir</button>
+              </div>
             </div>
-          <p class="comment-text">{{ comment.text }}</p>
-          <div class="comment-footer">
-            <span class="comment-progress" *ngIf="comment.progress">
-              Referente a: {{ comment.progress }}
-            </span>
-            <span class="comment-date">{{ comment.date | date: 'dd/MM/yyyy \'às\' HH:mm' }}</span>
-          </div>
+            <p class="comment-text">{{ comment.text }}</p>
+            <div class="comment-footer">
+              <span class="comment-progress" *ngIf="comment.progress">
+                Referente a: {{ comment.progress }}
+              </span>
+              <span class="comment-date">{{ comment.date | date: 'dd/MM/yyyy \'às\' HH:mm' }}</span>
+            </div>
+          </ng-container>
+
+          <ng-template #editTemplate>
+            <div class="edit-form">
+              <textarea [(ngModel)]="editedCommentText" name="editedCommentText"></textarea>
+              <div class="edit-actions">
+                <button (click)="saveEdit(comment)" class="save-edit-btn">Salvar</button>
+                <button (click)="cancelEditing()" class="cancel-edit-btn">Cancelar</button>
+              </div>
+            </div>
+          </ng-template>
+
         </div>
       </div>
     
-      <div class="no-comments" *ngIf="comments.length === 0">
-          <p>Você ainda não fez comentários para esta obra.</p>
-      </div>
+      <ng-template #noCommentsTemplate>
+        <div class="no-comments">
+            <p>Você ainda não fez comentários para esta obra.</p>
+        </div>
+      </ng-template>
     </ng-container>
 
   </ng-container>

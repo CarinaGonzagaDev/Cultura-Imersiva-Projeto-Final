@@ -20,6 +20,8 @@ export class CommentSectionComponent implements OnInit {
   comments$!: Observable<Comment[]>;
   
   newCommentText: string = '';
+  editingCommentId: number | null = null;
+  editedCommentText: string = '';
 
   constructor(
     private authService: AuthService,
@@ -40,7 +42,7 @@ export class CommentSectionComponent implements OnInit {
 
     const currentProgress = this.userInteractionService.getCurrentProgress(this.mediaId);
     
-    const newComment: Comment = {
+    const newComment: Omit<Comment, 'id'> = {
       user: 'Você',
       text: this.newCommentText,
       date: new Date(),
@@ -49,5 +51,30 @@ export class CommentSectionComponent implements OnInit {
     
     this.userInteractionService.addComment(this.mediaId, newComment);
     this.newCommentText = '';
+  }
+
+  enableEditing(comment: Comment): void {
+    this.editingCommentId = comment.id;
+    this.editedCommentText = comment.text;
+  }
+
+  cancelEditing(): void {
+    this.editingCommentId = null;
+    this.editedCommentText = '';
+  }
+
+  saveEdit(comment: Comment): void {
+    if (!this.editedCommentText.trim()) {
+      return;
+    }
+    const updatedComment = { ...comment, text: this.editedCommentText };
+    this.userInteractionService.editComment(this.mediaId, updatedComment);
+    this.cancelEditing();
+  }
+
+  deleteComment(commentId: number): void {
+    if (confirm('Tem certeza de que deseja excluir este comentário?')) {
+      this.userInteractionService.deleteComment(this.mediaId, commentId);
+    }
   }
 }

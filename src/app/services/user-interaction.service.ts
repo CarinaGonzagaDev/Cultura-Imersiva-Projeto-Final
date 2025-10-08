@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Media, MediaService } from './media.service';
 
 export interface Comment {
+  id: number; // Adicionado
   user: string;
   text: string;
   date: Date;
@@ -60,12 +61,36 @@ export class UserInteractionService {
     return this.interactions$.pipe(map(interactions => interactions[id] || {}));
   }
 
-  addComment(mediaId: number | string, comment: Comment): void {
+  addComment(mediaId: number | string, comment: Omit<Comment, 'id'>): void {
     const interaction = this.getInteraction(mediaId);
     const comments = interaction.comments ? [...interaction.comments] : [];
-    comments.unshift(comment);
+    const newComment: Comment = {
+      ...comment,
+      id: new Date().getTime() // Adiciona um ID único
+    };
+    comments.unshift(newComment);
     this.setData(mediaId, { comments });
   }
+
+  editComment(mediaId: number | string, updatedComment: Comment): void {
+    const interaction = this.getInteraction(mediaId);
+    if (interaction.comments) {
+      const commentIndex = interaction.comments.findIndex(c => c.id === updatedComment.id);
+      if (commentIndex > -1) {
+        interaction.comments[commentIndex] = updatedComment;
+        this.setData(mediaId, { comments: interaction.comments });
+      }
+    }
+  }
+
+  deleteComment(mediaId: number | string, commentId: number): void {
+    const interaction = this.getInteraction(mediaId);
+    if (interaction.comments) {
+      const updatedComments = interaction.comments.filter(c => c.id !== commentId);
+      this.setData(mediaId, { comments: updatedComments });
+    }
+  }
+
 
   getComments(mediaId: number | string): Observable<Comment[]> {
     return this.getInteractionData(mediaId).pipe(
